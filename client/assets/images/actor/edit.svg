@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12081) - http://www.bohemiancoding.com/sketch -->
+    <title>Imported Layers</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Onboard-Profile-Dashboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Profile-Overview" sketch:type="MSArtboardGroup" transform="translate(-320.000000, -198.000000)" fill="#22CACC">
+            <g id="Edit-Button-for-Actors" sketch:type="MSLayerGroup" transform="translate(320.000000, 187.000000)">
+                <path d="M0.0913426424,25.8902 L0.0913426424,25.8902 C0.167942642,25.9722 0.280342642,26.0112 0.391342642,25.9948 L5.21634264,25.2612 C5.28814264,25.2504 5.35454264,25.2168 5.40614264,25.166 L14.8999426,15.6722 C15.0327426,15.5394 15.0327426,15.3238 14.8999426,15.191 L10.8085426,11.0996 C10.6757426,10.9668 10.4601426,10.9668 10.3273426,11.0996 L8.01174264,13.4152 L0.833542642,20.5948 C0.781942642,20.6464 0.748342642,20.7128 0.737542642,20.784 L0.00394264241,25.609 C-0.0118573576,25.7112 0.0203426424,25.816 0.0913426424,25.8918 M0.745942642,25.2542 L1.33814264,21.3628 L4.63814264,24.6628 L0.746742642,25.255 M5.27494264,24.337 L1.66474264,20.727 L8.16234264,14.2292 L11.7725426,17.8394 L5.27494264,24.337 M12.2539426,17.3582 L8.64374264,13.748 L10.5687426,11.823 L14.1789426,15.4332 L12.2539426,17.3582" id="Imported-Layers" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,170 @@
+.navbar-mobile {
+  font-family: 'Montserrat Light', sans-serif;
+  height: 100%;
+}
+
+.navbar-nav > li > a {
+  padding-left: 30px;
+}
+
+.overflow-hidden {
+  overflow:hidden;
+}
+
+.mobile-nav-bar {
+  a {
+    color: white;
+  }
+}
+
+.nav .nav-divider {
+  background-color: #32ac96;
+}
+
+.navbar-mobile-header{
+    padding-top: 30px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul.mobile-nav-footer {
+  padding-left: 20px;
+}
+
+.mobile-nav-footer {
+    a {
+    color: white;
+  }
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+img.profile-image{
+  width:150%;
+}
+
+.nav{
+  img {
+    width: 150%;
+  }
+  li {
+    a:hover, .nav > li > a:focus {
+      text-decoration: none;
+      background-color: #3bbfa7;
+      opacity: .70;
+    }
+  }
+}
+
+
+
+.panels {
+  -moz-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.5);;
+  -webkit-box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.5);;
+  box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.5);
+  background:#3bbfa7;
+  display:block;
+  overflow-x:hidden;
+  overflow-y:auto;
+  pointer-events:all;
+  position:fixed;
+  transition:.2s ease-in-out;
+  z-index:1032;
+  width: 80%;
+  top: 0;
+  left:0;
+}
+
+.hide{
+  visibility: hidden;
+  -webkit-transition: all .55s ease-out;
+  -o-transition: all .55s ease-out;
+  transition: all .55s ease-out;
+}
+
+.show{
+  visibility: visible;
+  -webkit-transition: all .55s ease-out;
+  -o-transition: all .55s ease-out;
+  transition: all .55s ease-out;
+}
+
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+
+@media (min-width: 470px) and (max-width: $screen-md) { 
+  .mobile-nav-footer {
+    bottom: initial;
+    color:blue;
+    position: absolute;
+    width: 100%;
+  }
+
+  ul.mobile-nav-footer {
+    padding-left:90px;
+    padding-right:90px;
+  }
+
+  .nav img {
+    width: 70%;
+  }
+
+  img.profile-image{
+    width:70%;
+  }
+
+ .navbar {
+    .container{
+        padding-left: 70px;
+        padding-right:70px;
+    }
+  }
+} 
+
+@media only screen and (max-width: $screen-md) {
+
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+  }
+
+  .navbar-toggle {
+    border-style: none;
+  }
+
+  .basic-container {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+         -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
+  .no-scroll {
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+
+  .row-offcanvas-left.active {
+    left: 80%; /* 6 columns */
+  }
+
+  .sidebar-offcanvas {
+    position: absolute; //
+    top: 0;
+    width: 80%; /* 6 columns */
+  }
+}
+

@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col-sm-2">
+      <br>
+      <img class="header-icon" src="https://s3-us-west-1.amazonaws.com/castifistaticassets/polaroid.svg" >
+    </div>
+    <div class="col-sm-10">
+      <h3>Admin Actor Photos</h3>
+      <h5>{{actor.legalFirstName | capitalize }} {{ actor.legalLastName | capitalize}} / {{actor.email}}</h5>
+      <h4 class="text-danger">2MB maximum file size allowed</h4>
+      <br>
+    </div>
+</div>
+  <br>
+  <br>
+  <div class="row photos">
+
+    <div class="col-sm-4">
+     <img ngf-thumbnail="headShot || actor.headShot || 'assets/images/actor/picturebox.svg'">
+         <h5>Headshot</h5>
+          <input type="file" ng-model="headShot" ngf-max-size="2MB" ngf-select="uploadFiles($file, $invalidFiles, 'headShot')" accept="jpg,.jpeg, .png">
+          </input>
+             <div class="text-danger" ng-show="headShow"> {{errMsg}} </div>
+            <button class="btn btn-sm btn-primary btn-remove" ng-click="removePhoto('headShot')" ng-show="headShot || actor.headShot">Remove</button>
+          <br>
+    </div>
+
+    <div class="col-sm-4">
+     <img ngf-thumbnail="headToToe || actor.headToToe || 'assets/images/actor/picturebox.svg'">
+        <h5>Head to Toe</h5>
+          <input type="file" ng-model="headToToe" ngf-max-size="2MB" ngf-select="uploadFiles($file, $invalidFiles, 'headToToe')" accept="jpg,.jpeg, .png">
+          </input>
+           <div class="text-danger" ng-show="toeShow"> {{errMsg}} </div>
+          <button class="btn btn-sm btn-primary btn-remove" ng-click="removePhoto('headToToe')" ng-show="headToToe || actor.headToToe">Remove</button>
+          <br>
+    </div>
+
+    <div class="col-sm-4">
+        <img ngf-thumbnail="realLife || actor.realLife || 'assets/images/actor/picturebox.svg'">
+           <h5>Real Life</h5>
+             <input type="file" ng-model="realLife" ngf-max-size="2MB" ngf-select="uploadFiles($file, $invalidFiles, 'realLife')"
+              accept="jpg,.jpeg, .png">
+          </input>
+           <div class="text-danger" ng-show="realShow"> {{errMsg}}</div>
+          <button class="btn btn-sm btn-primary btn-remove" ng-click="removePhoto('realLife')" ng-show="realLife || actor.realLife">Remove</button>
+    </div>
+
+  </div>
+  <br>
+  <!-- end photos -->
+  <!-- video -->
+  <!-- end video -->
+  <!-- submit button -->
+  <div class="row">
+    <div class="col-sm-4"></div>
+          <div class="col-sm-4 text-center">
+              <button class="btn btn-lg btn-success" ui-sref="admin.actors.detail({id: actor._id})">
+                Save
+              </button>
+          </div>
+      <div class="col-sm-4"></div>
+    </div>
+  <!-- end submit button -->
+  <br>
+  <br>
+   <!-- need help -->
+    <div class="row">
+      <div class="col-sm-10 col-xs-4"></div>
+        <div class="col-sm-2 col-xs-4 text-center">
+           <a style="float:right" href="/contact"><h6>Need Help? <img class="help-img" src="assets/images/help.svg"></h6></a>
+        </div>
+      <div class="col-sm-5 col-xs-5"></div>
+    </div>
+    <!-- end need help -->
+
+

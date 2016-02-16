@@ -1,0 +1,90 @@
+// Colors
+// --------------------------------------------------
+
+$btnText:                           #fff;
+$btnTextAlt:                        #000;
+
+$btnFacebookBackground:             #3B5998;
+$btnFacebookBackgroundHighlight:    #133783;
+$btnGooglePlusBackground:           #dd4b39;
+$btnGooglePlusBackgroundHighlight:  #c53727;
+$btnGithubBackground:               #fafafa;
+$btnGithubBackgroundHighlight:      #ccc;
+
+.settings-container {
+  padding-left: 90px;
+  padding-right: 90px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
+}
+
+.settings-container {
+  .well {
+    position: absolute;
+    left: 25%;
+  }
+  .help-block{
+    color: #a94442;
+  }
+}
+
+.signup-container{
+    padding-left: 95px;
+    padding-right: 95px;
+}
+
+.signup-well {
+  background-color: white;
+  .btn-signup, .btn-login{
+     background-color: #23cacc;
+     color: white;
+  }
+  p{
+    font-family: 'Montserrat Light', sans-serif;
+  }
+  hr{
+    border-top: 1px solid #979797;
+  }
+  .btn{
+    padding: 10px 50px;
+    font-size: 14px;
+  }
+}
+
+// for mobile devices
+@media only screen and (max-width: $screen-xs) {
+  .signup-container{
+      padding-left: 25px;
+      padding-right: 25px;
+  }
+}
+
+// Social buttons
+// --------------------------------------------------
+
+.btn-facebook {
+  @include button-variant($btnText, $btnFacebookBackgroundHighlight, $btnFacebookBackgroundHighlight);
+}
+.btn-google-plus {
+  @include button-variant($btnText, $btnGooglePlusBackground, $btnGooglePlusBackgroundHighlight);
+}
+.btn-github {
+  @include button-variant($btnTextAlt, $btnGithubBackground, $btnGithubBackgroundHighlight);
+}
+
+// Media Queries 
+
+@media only screen and (max-width: $screen-xs) {
+
+    .signup-container{
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .settings-container .well {
+      left: 0%;
+}
+
+}
+

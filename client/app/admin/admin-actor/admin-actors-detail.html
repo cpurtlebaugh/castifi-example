@@ -1,0 +1,549 @@
+<div class="row">
+  <h3 class="col-sm-4 col-sm-4">Profile Complete: &nbsp{{actor.profileMetrics.profileComplete}}%</h3>
+  <h3 class="col-sm-8 col-xs-12">{{actor.legalFirstName | capitalize }} {{ actor.legalLastName | capitalize}}: &nbsp {{actor.email}}</h3>
+</div>
+
+<h3>Photos</h3>
+<!-- photos  -->
+  <div class="row">
+    <div class="col-sm-4">
+      <img ng-src="{{actor.headShot || '../assets/images/actor/mirrorbox.svg'}}">
+    </div>
+    <div class="col-sm-4">
+      <img ng-src="{{actor.headToToe || '../assets/images/actor/mirrorbox.svg'}}">
+    </div>
+    <div class="col-sm-4">
+      <img ng-src="{{actor.realLife || '../assets/images/actor/mirrorbox.svg'}}">
+    </div>
+  </div>
+<!-- end photos -->
+
+<h3>Basic Information</h3>
+<!-- names -->
+  <div class="row">
+    <div class="col-sm-4">
+
+      <label>First Name: </label>
+      <br>
+     {{actor.legalFirstName}}
+
+    </div>
+    <div class="col-sm-4">
+      <label>Last Name: </label>
+      <br>
+     {{actor.legalLastName}}
+    </div>
+
+    <div class="col-sm-4">
+
+      <label>Middle Name: </label>
+      <br>
+      {{actor.legalMiddleName}}
+    </div>
+  </div>
+<!-- end names -->
+<br>
+
+<!-- same union legal name -->
+<div ng-if="actor.info.unionSameLegalName === false">
+  <div class="row">
+    <div class="col-sm-4">
+      <label>Union First Name: </label>
+      <br>
+      {{actor.info.unionFirstName}}
+    </div>
+    <div class="col-sm-4">
+      <label>Union Last Name: </label>
+      <br>
+      {{actor.info.unionLastName}}
+    </div>
+    <div class="col-sm-4">
+      <label>Union Middle Name: </label>
+      <br>
+      {{actor.info.unionMiddleName}}
+    </div>
+  </div>
+</div>
+<!-- end union name -->
+
+<br>
+<!-- phone number, 18+, gender -->
+<div class="row">
+  <div class="col-sm-4">
+        <label>Phone Number: </label>
+        <br>
+        {{actor.contact.mainPhoneNum | tel}}
+  </div>
+
+  <div class="col-sm-4">
+      <label>Are you over 18?:</label>
+      <br>
+       {{actor.overEighteen}}
+  </div>
+
+  <div class="col-sm-4">
+  <label>Gender: </label>
+  <br>
+  {{actor.gender}}
+
+  </div>
+</div>
+<!-- end phone number, 18+, gender -->
+<br>
+
+<!-- address apt num  zip -->
+  <div class="row">
+    <div class="col-sm-8">
+      <label>Address: </label>
+      <br>
+      {{actor.contact.fullAddress}}
+    </div>
+
+    <div class="col-sm-2">
+       <label>Apartment: </label>
+       <br>
+       {{actor.contact.aptNum}}
+    </div>
+
+    <div class="col-sm-2">
+      <label>Zipcode: </label>
+      <br>
+      {{actor.contact.zipCode}}
+    </div>
+  </div>
+<!-- end apt num address zip -->
+<br>
+
+<!-- union or non union, new to bg, sag eligible -->
+  <div class="row">
+    <div class="col-sm-4">
+      <label>Union: </label>
+      <br>
+      {{actor.info.union}}
+    </div>
+    <div class="col-sm-4">
+      <label>Are you SAG eligible?: </label>
+      <br>
+      {{actor.info.sagEligible}}
+    </div>
+
+  <div ng-if="actor.info.union === false">
+    <div class="col-sm-4">
+      <label>New To BG Acting: </label>
+      <br>
+      {{actor.info.newActor}}
+    </div>
+  </div>
+
+  <div ng-if="actor.info.newActor === false">
+      <div class="col-sm-4">
+        <label>Acting Since: </label>
+        <br>
+        {{actor.info.actingSince}}
+      </div>
+    </div>
+ </div>
+<!-- end union or non uinion, new to bg, sag eligible -->
+
+<!-- movie quote -->
+  <div class="row">
+    <div class="col-sm-12"> <br>
+        <label>Favorite Movie Quote/Line</label>
+        <br>
+        {{actor.info.movieQuote}}
+    </div>
+  </div>
+<!-- end movieqoute -->
+
+
+<h3>Comfortable With</h3>
+<!-- are you comfortable with, nudity, kissing, changing hair -->
+  <div class="row">
+
+    <div class="col-sm-3 col-md-3">
+      <label>Kissing: {{actor.willing.kissing}}</label><br>
+      <label>Same-Sex Kissing: {{actor.willing.kissingSameSex}}</label><br>
+      <label>Partial Nudity: {{actor.willing.partialNudity}}</label><br>
+    </div>
+
+    <div class="col-sm-3 col-md-3">
+      <label>Full Nudity: {{actor.willing.fullNudity}}</label><br>
+      <label>Cutting Hair: {{actor.willing.cutHair}}</label><br>
+    </div>
+
+    <div class="col-sm-3 col-md-3">
+       <label>Coloring Hair: {{actor.willing.colorHair}}</label><br>
+       <label>Cross-Dressing: {{actor.willing.drag}}</label><br>
+    </div>
+
+    <div class="col-sm-3 col-md-3">
+       <label>Eating Meat: {{actor.willing.eatMeat}}</label><br>
+       <label>Traveling: {{actor.willing.travel}}</label><br>
+    </div>
+  </div>
+<!-- end are you comfortable with nudity, kissing, changing hair -->
+
+<br>
+
+<h3>Physical Appearance</h3>
+
+<!--  age portrayal, height, weight, body type, complexion -->
+<div class="row">
+  <div class="col-sm-2">
+    <label>Min. Port. Age: </label>
+    <br>
+    {{actor.appearance.portrayAgeMin}}
+  </div>
+
+  <div class="col-sm-2">
+    <label>Max Port. Age: </label>
+    <br>
+    {{actor.appearance.portrayAgeMax}}
+  </div>
+
+  <div class="col-sm-2">
+    <label>Height: </label>
+    <br>
+    {{actor.appearance.heightFeet}}'{{actor.appearance.heightInches}}"
+  </div>
+
+  <div class="col-sm-2">
+    <label>Weight: </label>
+    <br>
+    {{actor.appearance.weight}}
+  </div>
+
+  <div class="col-sm-2">
+    <label>Body Type: </label>
+    <br>
+    {{actor.appearance.bodyType}}
+  </div>
+
+  <div class="col-sm-2">
+    <label>Complexion: </label>
+    <br>
+    {{actor.appearance.complexion}}
+  </div>
+</div>
+<!--  end age portrayal, height, weight, body type, complexion -->
+<br>
+
+<!-- eye color, hair color, facial hair -->
+<div class="row">
+  <div class="col-sm-2">
+    <label>Eye Color: </label>
+    <br>
+    {{actor.appearance.eyeColor}}
+  </div>
+
+  <div class="col-sm-2">
+    <label>Hair Length: </label>
+    <br>
+    {{actor.appearance.hairLength}}
+  </div>
+
+  <div class="col-sm-2">
+    <label>Hair Color: </label>
+    <br>
+    {{actor.appearance.hairColor}}
+  </div>
+
+  <div class="col-sm-2">
+      <label>Facial Hair: </label>
+      <br>
+      {{actor.appearance.facialHairPresent}}
+  </div>
+
+  <div ng-if="actor.appearance.facialHairPresent === true">
+    <div class="col-sm-2">
+      <label>Facial Hair Color: </label>
+      <br>
+      {{actor.appearance.facialHairColor}}
+    </div>
+
+    <div class="col-sm-2">
+      <label>Facial Hair Style: </label>
+      <br>
+      {{actor.appearance.facialHairStyle}}
+    </div>
+  </div>
+</div>
+<!-- end eye color, hair color, facial hair -->
+<br>
+
+<!-- ethnic appearance -->
+<h3>Ethnic Appearances</h3>
+<div class="row">
+  <!-- ethnic looks -->
+    <div class="col-sm-3 col-xs-6">
+        <label>Asian: {{actor.ethnicLook.asian}}</label><br>
+        <label>African American: {{actor.ethnicLook.africanAmerican}}</label><br>
+
+    </div>
+
+    <div class="col-sm-3 col-xs-6">
+        <label>Caucasian: {{actor.ethnicLook.caucasian}}</label><br>
+        <label>East Indian: {{actor.ethnicLook.easternIndian}}</label><br>
+    </div>
+    <div class="col-sm-3 col-xs-6">
+        <label>Hispanic: {{actor.ethnicLook.hispanic}}</label><br>
+       <label>Middle Eastern: {{actor.ethnicLook.middleEastern}}</label><br>
+    </div>
+  <!-- ethnic looks -->
+    <div class="col-sm-3 col-xs-6">
+
+        <label>Native American: {{actor.ethnicLook.nativeAmerican}}</label><br>
+        <label>Pacific Islander: {{actor.ethnicLook.pacificIslander}}</label><br>
+    </div>
+</div>
+<!-- end ethnic appearance -->
+<br>
+<h3>Miscellaneous</h3>
+<!-- twin, triplet, pregnant, due date-->
+<div class="row">
+  <div class="col-sm-3 col-md-3">
+    <label>Twin: {{actor.appearance.twins}}</label><br>
+  </div>
+
+  <div class="col-sm-3 col-md-3">
+    <label>Triplet: {{actor.appearance.triplet}}</label><br>
+  </div>
+
+  <div class="col-sm-1"></div>
+
+  <div class="col-sm-2 col-md-2">
+    <label>Pregnant: {{actor.appearance.pregnant}}</label><br>
+  </div>
+
+  <div ng-if="actor.appearance.pregnant === true">
+    <div class="col-sm-2 col-md-2">
+        <label>Due Date{{actor.appearance.pregnantDueDate}}</label>
+    </div>
+  </div>
+</div>
+<!-- twin, triplet, end are you pregnant, due date -->
+<br>
+
+<!-- tattoos and piercings -->
+<!-- ng-if tattoos present label -->
+<div ng-if="actor.tattoos.present">
+  <div class="row">
+    <div class="col-sm-12">
+        <label>Tattoos: {{actor.tattoos.present}}</label><br>
+    </div>
+  </div>
+</div>
+<!-- end ng-if tattoos present label -->
+
+<!-- ng-if tattoos present options -->
+<div ng-if="actor.tattoos.present === true">
+<div class="row">
+    <div class="col-sm-1 col-xs-0"></div>
+    <div class="col-sm-2 col-xs-6">
+        <label>Forearm: {{actor.tattoos.forearm}}</label><br>
+        <label>Upper Arm: {{actor.tattoos.upperArm}}</label><br>
+    </div>
+
+    <div class="col-sm-2 col-xs-6">
+        <label>Neck: {{actor.tattoos.neck}}</label><br>
+        <label>Face: {{actor.tattoos.face}}</label><br>
+    </div>
+
+    <div class="col-sm-2 col-xs-6">
+        <label>Chest: {{actor.tattoos.chest}}</label><br>
+        <label>Stomach: {{actor.tattoos.stomach}}</label><br>
+    </div>
+
+    <div class="col-sm-2 col-xs-6">
+      <label>Back: {{actor.tattoos.back}}</label><br>
+      <label>Hand: {{actor.tattoos.hand}}</label><br>
+    </div>
+
+    <div class="col-sm-2 col-xs-6">
+      <label>Leg: {{actor.tattoos.leg}}</label><br>
+      <label>Foot: {{actor.tattoos.foot}}</label><br>
+    </div>
+  </div>
+</div>
+<!-- end ng-if tattoos present options -->
+
+<br>
+
+<!-- ng-if piercings are present for label -->
+<div ng-if="actor.piercings.present === true">
+  <div class="row">
+      <div class="col-sm-12">
+        <label>Piercings: {{actor.piercings.present}}</label><br>
+      </div>
+  </div>
+</div>
+<!-- end ng-if piercings present for label -->
+
+<!-- ng-if present for piercings options  -->
+<div ng-if="actor.piercings.present === true">
+  <div class="row">
+    <div class="col-sm-1 col-xs-0"></div>
+    <div class="col-sm-2 col-xs-6">
+      <label>Ears: {{actor.piercings.ear}}</label><br>
+      <label>Nose: {{actor.piercings.nose}}</label><br>
+    </div>
+    <div class="col-sm-2 col-xs-6">
+      <label>Eyebrow: {{actor.piercings.eyebrow}}</label><br>
+      <label>Lip: {{actor.piercings.lip}}</label><br>
+    </div>
+
+    <div class="col-sm-2 col-xs-6">
+      <label>Tongue: {{actor.piercings.tongue}}</label><br>
+      <label>Navel: {{actor.piercings.navel}}</label><br>
+    </div>
+  </div>
+</div>
+<br>
+<!-- end ng-if piercings options -->
+<!-- end piercings -->
+<!-- end tattoos and piercings -->
+
+<!-- amputee and disabilities -->
+<div ng-if="actor.disabled.present === true">
+  <div class="row">
+    <div class="col-sm-6">
+      <label>Disabilities: {{actor.disabled.present}}</label> <br>
+    </div>
+  </div>
+</div>
+
+<div ng-if="actor.disabled.present === true">
+  <div class="row">
+    <!-- if disabled present-->
+    <div class="col-sm-6">
+      <label>Blind: {{actor.disabled.blind}}</label><br>
+      <label>Hearing Impaired: {{actor.disabled.impairedHearing}}</label><br>
+      <label>Deaf: {{actor.disabled.deaf}}</label><br>
+    </div>
+    <div class="col-sm-6">
+      <label>Mute: {{actor.disabled.mute}}</label><br>
+      <label>Wheelchair: {{actor.disabled.usesWheelchair}}</label><br>
+    </div>
+  </div>
+</div>
+  <!-- end if disabled end-->
+    <!-- end disabled -->
+<br>
+<!-- start amputee -->
+
+<!-- ng-if amputee present label -->
+<div ng-if="actor.amputee.present">
+  <div class="row">
+    <div class="col-sm-6">
+      <label>Amputee: {{actor.amputee.present}}</label><br>
+    </div>
+  </div>
+</div>
+<!-- end ng-if amputee present label -->
+
+<!-- ng-if amputee present options -->
+<div ng-if="actor.amputee.present === true">
+  <div class="row">
+    <div class="col-sm-6">
+      <label>Arm: {{actor.amputee.arm}}</label><br>
+      <label>Hand: {{actor.amputee.hand}}</label><br>
+      <label>Finger: {{actor.amputee.finger}}</label><br>
+    </div>
+
+    <div class="col-sm-6">
+      <label>Leg: {{actor.amputee.leg}}</label><br>
+      <label>Foot: {{actor.amputee.foot}}</label><br>
+    </div>
+      <!-- end ng-if -->
+      <!-- end amputee -->
+  </div>
+</div>
+<!-- end ng-if amputee present options -->
+<!-- end amputee and disabilities -->
+
+<h3>Wardrobe</h3>
+<!-- basic wardrobe -->
+<div class="row">
+  <div class="col-sm-3 col-xs-6">
+    <label>Tuxedo: {{actor.wardrobe.tux}}</label><br>
+    <label>Full Suit: {{actor.wardrobe.fullSuit}}</label><br>
+    <label>Business Suit: {{ actor.wardrobe.businessSuit}}</label><br>
+  </div>
+
+  <div class="col-sm-3 col-xs-6">
+    <label>Bathing Suit: {{actor.wardrobe.bathingSuit}}</label><br>
+    <label>Cocktail Dress: {{ actor.wardrobe.cocktailDress}}</label><br>
+    <label>Lingerie: {{actor.wardrobe.lingerie}}</label><br>
+  </div>
+
+  <div class="col-sm-3 col-xs-6">
+    <label>Doctor: {{actor.costumes.doctor}}</label><br>
+    <label>EMT: {{actor.costumes.emt}}</label><br>
+    <label>Nurse: {{actor.costumes.nurse}}</label><br>
+  </div>
+
+  <div class="col-sm-3 col-xs-6">
+    <label>Paramedic: {{actor.costumes.paramedic}}</label><br>
+    <label>Fire Dept: {{actor.costumes.fireDept}}</label><br>
+    <label>Police: {{actor.costumes.police}}</label><br>
+  </div>
+</div>
+<!-- end uniforms -->
+<br>
+<!-- male and female measurements -->
+
+<h3>Men's Clothing Measurements</h3>
+<!-- if yes men's -->
+<div class="row">
+   <div ng-if="actor.clothingMenSizes.present">
+    <br>
+      <div class="col-sm-3">
+          <label>Coat Length:</label><br>{{actor.clothingMenSizes.coatLength}}
+          <label>Coat Size: </label><br>{{actor.clothingMenSizes.coatSize}}
+          <label>Shirt Sleeve: </label><br>{{actor.clothingMenSizes.shirtSleeve}}
+      </div>
+      <div class="col-sm-3">
+          <label>Shirt Neck: </label><br>{{actor.clothingMenSizes.shirtNeck}}
+          <label>Pant Waist: </label><br>{{actor.clothingMenSizes.pantWaist}}
+      </div>
+      <div class="col-sm-3">
+          <label>Pant Inseam: </label><br> {{actor.clothingMenSizes.pantInseam}}
+          <label>Hat Size: </label><br>{{actor.clothingMenSizes.hat}}
+      </div>
+      <div class="col-sm-3">
+          <label>Glove Size: </label><br>{{actor.clothingMenSizes.glove}}
+          <label>Shoe Size: {{actor.clothingMenSizes.shoe}}</label><br>
+      </div>
+    </div>
+</div>
+<!-- end men's clothing measurements -->
+<br>
+<!-- women's clothing measurements-->
+
+<!-- ng-if women's clothing measurement-->
+<h3>Women's Clothing Measurements</h3>
+<div class="row">
+  <div ng-if="actor.clothingWomenSizes.present">
+      <div class="col-sm-3">
+          <label>Pant Waist: {{actor.clothingWomenSizes.pantWaist}}</label><br>
+          <label>Pant Inseam: {{actor.clothingWomenSizes.pantInseam}}</label><br>
+          <label>Band Size: {{actor.clothingWomenSizes.bustSize}}</label><br>
+      </div>
+      <div class="col-sm-3">
+          <label>Cup Size: {{actor.clothingWomenSizes.cupSize}}</label><br>
+          <label>Hips: {{actor.clothingWomenSizes.hips}}</label><br>
+      </div class="col-sm-3">
+      <div class="col-sm-3">
+          <label>Dress Size: {{actor.clothingWomenSizes.dress}}</label><br>
+          <label>Shoes: {{actor.clothingWomenSizes.shoe}}</label><br>
+      </div>
+      <div class="col-sm-3">
+          <label>Hat: {{actor.clothingWomenSizes.hat}}</label><br>
+          <label>Gloves: {{actor.clothingWomenSizes.glove}}</label><br>
+      </div>
+  </div>
+</div>
+<!-- end if yes women's measurements -->
+
+
+

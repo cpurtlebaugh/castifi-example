@@ -1,0 +1,373 @@
+<div class="row">
+		<div class="col-sm-2">
+			<br>
+			<img class="header-icon" src="assets/images/actor/document.svg" >
+		</div>
+		<div class="col-sm-10">
+			<h3>Basic Information</h3>
+			<h5>Tell us a bit about yourself!</h5>
+      <h6 class="text-danger"><span class="glyphicon glyphicon-asterisk text-danger"></span> Indicates a required field.</h6>
+		</div>
+	</div>
+	<br>
+	<br>
+     <!-- start form -->
+	 <form class="form actor-overview" name="form" ng-submit="register(form)" novalidate>
+	<!-- names -->
+	<div class="row">
+		<div class="col-sm-4">
+		    <div class="form-group" ng-class="{ 'has-success': form.firstname.$valid && submitted,
+                                               'has-error': form.firstname.$invalid && submitted }">
+            <label>First Name <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+            <input type="text" name="firstname" class="form-control" ng-model="actor.legalFirstName"
+	                 required/>
+            <p class="help-block" ng-show="form.firstname.$error.required && submitted">
+              A first name is required
+            </p>
+          </div>
+		</div>
+		<div class="col-sm-4">
+
+	         <div class="form-group" ng-class="{ 'has-success': form.lastname.$valid && submitted,
+	                                            'has-error': form.lastname.$invalid && submitted }">
+	          <label>Last Name <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+	          <input type="text" name="lastname" class="form-control" ng-model="actor.legalLastName"
+	                 required/>
+	          <p class="help-block" ng-show="form.lastname.$error.required && submitted">
+	            A last name is required
+	          </p>
+	        </div>
+
+		</div>
+		<div class="col-sm-4">
+			<div class="form-group">
+	          <label>Middle Name</label>
+	          <input type="text" name="middle" class="form-control" ng-model="actor.legalMiddleName"/>
+	        </div>
+
+		</div>
+	</div>
+	<!-- end names -->
+	<!-- dob and gender -->
+	<div class="row">
+		<div class="col-sm-6">
+        <label>Are you over 18? <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+        <br>
+        <div class="btn-group">
+          <label class="btn btn-primary" ng-model="actor.overEighteen" ng-required="!actor.overEighteen"btn-radio="false">No</label>
+          <label class="btn btn-primary" ng-model="actor.overEighteen" ng-required="!actor.overEighteen"btn-radio="true">Yes</label>
+        </div>
+        <p class="help-block" ng-show="!actor.overEighteen && submitted">
+              <span class="text-danger"> You must be over 18. </span>
+        </p>
+
+        <!-- <p>The control is: {{ testForm.flavor.$valid ? 'valid' : 'invalid' }}</p>
+    <p>The "required" validator is: {{ testForm.flavor.$error.required ? 'not satisfied' : 'satisfied' }}</p> -->
+		</div>
+
+		<div class="col-sm-6">
+		<label>Gender</label>
+        <br>
+	        <div class="btn-group">
+	          <label class="btn btn-primary" ng-model="actor.gender" btn-radio="'male'">Male</label>
+	          <label class="btn btn-primary" ng-model="actor.gender" btn-radio="'female'">Female</label>
+	          <label class="btn btn-primary" ng-model="actor.gender" btn-radio="'neutral'">Neutral</label>
+	        </div>
+		</div>
+	</div>
+	<br>
+	<!-- end dob and gender -->
+	<!-- phone number -->
+	<div class="row">
+		<div class="col-sm-6">
+		<div class="form-group" ng-class="{ 'has-success': form.phone.$valid && submitted,
+                                             'has-error': form.phone.$invalid && submitted }">
+          <label>Phone Number <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+          <input type="text" name="phone" class="form-control" ng-model="actor.contact.mainPhoneNum"
+          		 ui-mask="(999) 999-9999"  	
+                 required>
+          <p class="help-block" ng-show="form.phone.$error.required && submitted">
+            A phone number of exactly 10 is required
+          </p>
+          <!--   <p class="help-block"
+             ng-show="(form.phone.$error.minlength || form.phone.$error.maxlength) && submitted">
+            A phone number must be exactly 10 numbers.
+          </p> -->
+     <!--       <p class="help-block"
+             ng-show="form.phone.$error.pattern && submitted">
+            A phone number cannot contain any special characters.
+          </p> -->
+        </div>
+
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+	<!-- end phone number -->
+	<!-- address apt num -->
+	<div class="row">
+		<div class="col-sm-9">
+
+			<div class="form-group" ng-class="{ 'has-success': form.address.$valid && submitted,
+                                             'has-error': form.address.$invalid && submitted }">
+	            <label>Please fill out your full mailing address <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+	              <input type="text" name="address" class="form-control"
+	              placeholder="Mailing Address"
+	              ng-autocomplete
+	              ng-model="actor.contact.fullAddress"
+	              options="options"
+	              details="details"
+	              ng-minlength="18"
+	              required/>
+	              <p class="help-block" ng-show="form.address.$error.required && submitted">
+            		A full address is required.
+          		  </p>
+          		   <p class="help-block"
+		             ng-show="form.address.$error.minlength && submitted">
+		             Please include full autocomplete address.
+		          </p>
+	         </div>
+
+		</div>
+		<div class="col-sm-3">
+
+			 <div class="form-group" ng-class="{ 'has-success': form.apartment.$valid && submitted,
+                                                  'has-error': form.apartment.$invalid && submitted }">
+                <label>Apartment or Suite</label>
+                <input type="text" name="apartment" class="form-control" ng-model="actor.contact.aptNum"/>
+              </div>
+
+		</div>
+	</div>
+	<!-- end address apt num -->
+	<!-- city state zip country -->
+<!-- 	<div class="row">
+		<div class="col-sm-4">
+			  <div class="form-group" ng-class="{ 'has-success': form.city.$valid && submitted,
+                                             'has-error': form.city.$invalid && submitted }">
+		          <label>City <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+		          <input type="text" name="city" class="form-control" ng-model="actor.contact.city"
+		                 required/>
+		          <p class="help-block" ng-show="form.city.$error.required && submitted">
+		            A city is required
+		          </p>
+		        </div>
+		</div>
+		<div class="col-sm-2">
+			 <div class="form-group" ng-class="{ 'has-success': form.state.$valid && submitted,
+                                               'has-error': form.state.$invalid && submitted }">
+            <label>State <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+            <input type="text" name="state" style="text-transform: uppercase" class="form-control" ng-model="actor.contact.state"
+                   required/>
+            <p class="help-block" ng-show="form.state.$error.required && submitted">
+              A state is required
+            </p>
+          </div>
+
+		</div>
+		<div class="col-sm-3">
+			 <div class="form-group" ng-class="{ 'has-success': form.zipcode.$valid && submitted,
+                                               'has-error': form.zipcode.$invalid && submitted }">
+            <label>Zipcode <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+            <input type="number" name="zipcode" class="form-control" ng-model="actor.contact.zipCode"
+                   required/>
+            <p class="help-block" ng-show="form.zipcode.$error.required && submitted">
+              A zipcode is required
+            </p>
+          </div>
+		</div>
+		<div class="col-sm-3">
+			 <div class="form-group" ng-class="{ 'has-success': form.country.$valid && submitted,
+                                            'has-error': form.country.$invalid && submitted }">
+          <label>Country <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+          <input type="text" name="country" style="text-transform: uppercase" class="form-control" ng-model="actor.contact.country"
+                 required/>
+          <p class="help-block" ng-show="form.country.$error.required && submitted">
+            A country is required
+          </p>
+        </div>
+
+		</div>
+	</div> -->
+	<!-- end city state zip country -->
+	<!-- union or non union -->
+	<div class="row">
+		<div class="col-sm-6">
+			<label>Non-Union or Union</label>
+        	<br>
+	        <div class="btn-group">
+	          <label class="btn btn-primary" ng-model="actor.info.union" btn-radio="false">Non-Union</label>
+	          <label class="btn btn-primary" ng-model="actor.info.union" btn-radio="true">SAG-AFTRA</label>
+	        </div>
+		</div>
+		<div class="col-sm-6">
+      <label>Are you SAG eligible?</label>
+          <br>
+          <div class="btn-group">
+            <label class="btn btn-primary" ng-model="actor.info.sagEligible" btn-radio="false">No</label>
+            <label class="btn btn-primary" ng-model="actor.info.sagEligible" btn-radio="true">Yes</label>
+          </div>
+    </div>
+	</div>
+	<!-- end union or non inion -->
+	<!-- same union legal name -->
+	<br>
+  <div ng-if="actor.info.union === true">
+	 <div class="row">
+  		<div class="col-sm-10 col-offset-sm-2">
+  		<label>My Union Name Is The Same As Legal Name</label>
+      	<br>
+        <div class="btn-group">
+          <label class="btn btn-primary" ng-model="actor.info.unionSameLegalName" btn-radio="true">Yes</label>
+          <label class="btn btn-primary" ng-model="actor.info.unionSameLegalName" btn-radio="false">No</label>
+        </div>
+  		</div>
+    </div>
+	</div>
+	<!-- end same union legal name -->
+	<!-- union name -->
+	<div ng-if="actor.info.unionSameLegalName === false">
+	<br>
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="form-group">
+              <label>Union First Name</label>
+              <input type="text" name="name" class="form-control" ng-model="actor.info.unionFirstName"/>
+            </div>
+		</div>
+		<div class="col-sm-4">
+             <div class="form-group">
+              <label>Union Last Name</label>
+              <input type="text" name="first" class="form-control" ng-model="actor.info.unionLastName"/>
+            </div>
+		</div>
+		<div class="col-sm-4">
+            <div class="form-group">
+              <label>Union Middle Name</label>
+              <input type="text" name="middle" class="form-control" ng-model="actor.info.unionMiddleName"/>
+            </div>
+		</div>
+	</div>
+	</div>
+	<br>
+	<!-- end union name -->
+	<!-- acting since -->
+	<div class="row">
+		<div class="col-sm-10">
+			<label>Are you new to background acting?</label>
+        	<br>
+	        <div class="btn-group">
+	          <label class="btn btn-primary" ng-model="actor.info.newActor" btn-radio="true">Yes</label>
+	          <label class="btn btn-primary" ng-model="actor.info.newActor" btn-radio="false">No</label>
+	        </div>
+		</div>
+		<div class="col-sm-2"></div>
+	</div>
+	<!-- ng-if -->
+	<div ng-if="actor.info.newActor === false">
+	<br>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="form-group">
+		      <label>Acting Since</label>
+            <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="actor.info.actingSince" close-text="close" is-open="$parent.opened"/>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </p>
+		    </div>
+			</div>
+		</div>
+	</div>
+	<!-- ng-if -->
+	<br>
+	<!-- end acting since -->
+   <div class="row">
+
+    <div class="col-sm-12">
+          <label>Are you comfortable with...</label>
+<!-- i am willing to...nudity, kissing, change hair -->
+
+        <div class="row">
+
+  <!-- nudity -->
+          <div class="col-sm-4 col-md-3">
+            <div>
+              <input type="checkbox" ng-model="actor.willing.kissing"/>
+              <label>Kissing</label><br>
+              <input type="checkbox" ng-model="actor.willing.kissingSameSex"/>
+              <label>Same-Sex Kissing</label><br>
+              <input type="checkbox" ng-model="actor.willing.partialNudity"/>
+              <label>Partial Nudity</label><br>
+
+            </div>
+          </div>
+  <!-- end nudity -->
+  <!-- change hair -->
+          <div class="col-sm-4 col-md-3">
+           	<input type="checkbox" ng-model="actor.willing.fullNudity"/>
+              <label>Full Nudity</label><br>
+              <input type="checkbox" ng-model="actor.willing.cutHair"/>
+              <label>Cutting Hair</label><br>
+              <input type="checkbox" ng-model="actor.willing.colorHair"/>
+              <label>Coloring Hair</label><br>
+
+          </div>
+  <!-- end hair -->
+  		  <div class="col-sm-4 col-md-3">
+  		  	   <input type="checkbox" ng-model="actor.willing.drag"/>
+                <label>Cross-Dressing</label><br>
+  		  		<input type="checkbox" ng-model="actor.willing.eatMeat"/>
+               <label>Eating Meat</label><br>
+               	<input type="checkbox" ng-model="actor.willing.travel"/>
+               <label>Traveling</label><br>
+  		  </div>
+    </div>
+<!-- end i am willing to...nudity, kissing, change hair -->
+ <!-- end are you willing  -->
+</div>
+
+	<!-- aboutme and movie quote -->
+	<div class="row">
+<!-- 		<div class="col-sm-6"> <br>
+			 <div class="form-group">
+	              <label>About Me</label>
+	              <textarea class="form-control capitalize-override" rows="3" ng-model="actor.info.aboutMe"></textarea>
+        	</div>
+		</div> -->
+		<div class="col-sm-6"> <br>
+			<div class="form-group">
+	              <label>Favorite Movie Quote/Line</label>
+	              <textarea class="form-control capitalize-override" rows="3" ng-model="actor.info.movieQuote"></textarea>
+        	</div>
+
+		</div>
+	</div>
+	<!-- end aboutme and movieqoute -->
+
+
+	<!-- submit button -->
+	<div class="row">
+	    <div class="col-sm-5"></div>
+        <div class="col-sm-2 text-center">
+	            <button class="btn btn-lg btn-success" type="submit">
+	              Save &amp Continue
+	            </button>
+        </div>
+    	<div class="col-sm-5"></div>
+    </div>
+    <!-- end submit button -->
+    <br>
+    <br>
+    <!-- need help -->
+    <div class="row">
+    	<div class="col-sm-10 col-xs-4"></div>
+        <div class="col-sm-2 col-xs-4 text-center">
+	         <a style="float:right" href="/contact"><h6>Need Help? <img class="help-img" src="assets/images/help.svg"></h6></a>
+        </div>
+    	<div class="col-sm-5 col-xs-5"></div>
+    </div>
+    <!-- end need help -->
+
+	</form>
+	<!-- end form -->

@@ -1,0 +1,285 @@
+.btn-learn{
+    background-color: transparent;
+    margin-left: 10px;
+    color: $brand-info;
+    border: 1px solid $brand-info;
+    padding: 10px 30px;
+    margin-top: 5px;
+    &:hover{
+        color: white;
+        background-color: $brand-info;
+        border: 1px solid white;
+    }
+}
+
+.btn-create{
+    background-color: $brand-primary;
+    color: white;
+    border: 1px solid $brand-primary;
+    padding: 10px 30px;
+    margin-left:10px;
+    margin-top: 5px;
+    &:hover{
+        color: white;
+        background-color: $brand-primary;
+        border: 1px solid white;
+    }
+}
+
+.btn-bottom-create{
+    background-color: $brand-primary;
+    color: white;
+    border: 1px solid $brand-primary;
+    padding: 10px 70px;
+    &:hover{
+        color: white;
+        background-color: $brand-primary;
+        border: 1px solid white;
+    }
+}
+
+.hero-first-text{
+    text-shadow: 1px 2px rgba(0,0,0,0.5);
+}
+
+.top-well{
+    margin-bottom: 30px;
+}
+
+.bottom-create {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.landing-footer{
+    background-color: white;
+    color: black;
+    padding: 10px 0px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    overflow: visible;
+    letter-spacing: 0px;
+}
+
+#banner {
+    border-bottom: none;
+    margin-top: -20px;
+}
+
+#banner h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.hero-unit {
+    position: relative;
+    padding: 30px 0px;
+    color: #F5F5F5;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background: $brand-info;
+    width: 100%
+}
+
+.footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 70px;
+    border-top: 1px solid #E5E5E5;
+}
+
+.landing-bottom-well {
+    margin-top: 85px;
+    margin-bottom: 85px;
+    font-family: 'Montserrat Light', sans-serif;
+}
+
+img.landing-images {
+    padding: 10px 0;
+    width: 45%;
+ }
+
+#banner.hero-unit {
+    .container{
+        padding: 30px 0px;
+        margin-top: 200px;
+        margin-bottom: 300px;
+    }
+}
+
+#banner.hero-unit {
+  background-image: url("https://s3-us-west-1.amazonaws.com/castifistaticassets/Heroconic-desktop.svg"); 
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: $brand-info;
+  padding-top: 10%;
+  padding-bottom: 27%;
+  background-position: 0px 55px;
+  letter-spacing: 1px;
+  h4, h5{
+    font-family: 'Montserrat Light', sans-serif;
+  }
+}
+
+
+.account-container {
+    h1{
+     color: white;
+    }
+}
+
+// Media Breakpoints
+
+@media only screen and (max-width: $screen-xs) {
+
+    #banner.hero-unit {
+      background-image: url("https://s3-us-west-1.amazonaws.com/castifistaticassets/Heroconic-mobile.svg");
+      background-repeat: no-repeat;
+      background-color: $brand-info;
+      background-size: 100% 163%;
+      padding-top: 9%;
+      padding-bottom: 46%;
+      background-position: 0px 0px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+   .navbar-default .navbar-toggle .icon-bar{
+        background-color:white;
+    }
+
+    .navbar-default .navbar-toggle {
+        border-color: transparent;
+        &:focus{
+            background-color: white;
+
+            .icon-bar{
+                background-color:$brand-info;
+            }
+
+        }
+        &:hover{
+            background-color:white;
+
+            .icon-bar{
+                background-color:$brand-info;
+            }
+
+        }
+    }
+
+    .navbar-default .navbar-nav > li > a.signup-link {
+        padding: 10px 15px;
+    }
+
+}
+
+/* Custom Navbar Styles */
+
+.navbar-default {
+    background-color: $brand-info;
+    box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.5);
+    border-color: $brand-info;
+    font-family: 'Montserrat Light', sans-serif;
+    .navbar-text {
+        color: white;
+    }
+
+}
+
+.navbar-brand{
+    padding: 10px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    z-index: 2001;
+}
+
+.dropdown-menu{
+    padding: 10px 0px;
+}
+
+.dropdown-menu > li > a {
+    padding: 10px 20px;
+}
+
+ul.signup-link a {
+    position: relative;
+    display: block;
+    padding: 15px 5px;
+}
+
+.navbar-text {
+  margin-left: 15px;
+  color: white;
+}
+
+.navbar-default .navbar-nav > li > a.signup-link{
+    padding: 15px 5px;
+}
+
+.navbar {
+    .container{
+        padding-left: 90px;
+        padding-right:90px;
+    }
+}
+
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: black;
+    background-color: $brand-info;
+}
+
+/* Navbar Custom Media Breakpoints */
+
+@media only screen and (max-width: $screen-xs) {
+
+    .navbar {
+        .container{
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+
+   .navbar-default .navbar-toggle .icon-bar{
+        background-color:white;
+    }
+
+    .navbar-default .navbar-toggle {
+        border-color: transparent;
+        &:focus{
+            background-color: white;
+
+            .icon-bar{
+                background-color:$brand-info;
+            }
+
+        }
+        &:hover{
+            background-color:white;
+
+            .icon-bar{
+                background-color:$brand-info;
+            }
+
+        }
+    }
+
+    .navbar-default .navbar-nav > li > a.signup-link {
+        padding: 10px 15px;
+    }
+
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: white;
+    }
+
+}
+

@@ -1,0 +1,104 @@
+<div class="container">
+  <div class="admin-table row">
+    <div class="col-sm-12">
+      <table st-table="displayActors" st-safe-src="actors" st-set-filter="customFilter" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th class="col-sm-1">Photo</th>
+          <th class="col-sm-1" st-sort="email">Email</th>
+          <th class="col-sm-1" st-sort="legalFirstName">First Name</th>
+          <th class="col-sm-1" st-sort="legalLastName">Last Name</th>
+          <th class="col-sm-1" st-sort="appearance.portrayAgeMin">Min. Port. Age</th>
+          <th class="col-sm-1" st-sort="appearance.portrayAgeMax">Max. Port. Age</th>
+          <th class="col-sm-1" st-sort="gender">Gender</th>
+          <th class="col-sm-1" st-sort="city">City</th>
+          <th class="col-sm-1" td colspan="1" st-sort="info.union">Union</th>
+          <th class="col-sm-1" st-sort="info.sagEligible">SAG-Eligible</th>
+          <th class="col-sm-1" st-sort="ethnicLook">Ethnicity</th>
+      <!--     <th st-sort="ethnicLook">Ethnicity 1</th>
+          <th st-sort="ethnicLook">Ethnicity 2</th>
+          <th st-sort="ethnicLook">Ethnicity 3</th> -->
+        </tr>
+         <tr>
+          <th></th>
+          <th>
+            <input st-search="email" placeholder="search email" class="input-sm form-control" type="search"/>
+          </th>
+          <th>
+           <input st-search="legalFirstName" placeholder="search first" class="input-sm form-control" type="search"/>
+         </th>
+
+          <th>
+           <input st-search="legalLastName" placeholder="search last" class="input-sm form-control" type="search"/>
+         </th>
+
+         <th>
+            <input st-search="appearance.portrayAgeMin" placeholder="min 1st #" class="input-sm form-control" type="search"></input>
+      <!--         <st-number-range predicate="ageLow" lower="query.lower"></st-number-range>
+      --> </th>
+
+         <th>
+            <input st-search="appearance.portrayAgeMax" placeholder="max 1st #" class="input-sm form-control" type="search"></input>
+         <!-- <st-number-range predicate="ageHigh" higher="query.higher"></st-number-range> -->
+         </th>
+
+
+        <th>
+          <select st-search="gender" >
+          <option value="">All</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="neutral">Neutral</option>
+          </select>
+    <!--        <input st-search="gender" placeholder="search gender" class="input-sm form-control" type="search"/> -->
+        </th>
+
+        <th>
+          <input st-search="city | " placeholder="city" class="input-sm form-control" type="search"></input>
+        </th>
+
+         <th>
+            <select st-search="info.union">
+              <option value="">All</option>
+              <option value="true">Union</option>
+              <option value="false">Non</option>
+            </select>
+         </th>
+
+         <th>
+            <select st-search="info.sagEligible">
+              <option value="">All</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+         </th>
+
+         <th>
+      <!--        <input st-search="ethnicLook" placeholder="ethnicity" class="input-sm form-control" type="search"></input> -->
+         </th>
+        <!--  <th>
+          <st-number-range predicate="balance" lower="query.lower" higher="query.higher"></st-number-range>
+        </th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="actor in displayActors | filter: {legalFirstName: '!!'}">
+          <td><img style="width: 100%" ng-src="{{actor.headShot}}"></td>
+          <td><a ui-sref="admin.actors.detail({id: actor._id})">{{actor.email}}</a></td>
+          <td>{{actor.legalFirstName}}</td>
+          <td>{{actor.legalLastName}}</td>
+          <td>{{actor.appearance.portrayAgeMin}}</td>
+          <td>{{actor.appearance.portrayAgeMax}}</td>
+          <td>{{actor.gender}}</td>
+          <td>{{actor.city}}</td>
+          <td>{{actor.info.union}}</td>
+          <td>{{actor.info.sagEligible}}</td>
+          <!-- <td>{{actor.ethnicLook}}</td> -->
+          <td><div ng-repeat="(key, value) in actor.ethnicLook">{{key}}</div></td>
+
+        </tr>
+      </tbody>
+      </table>
+    </div>
+  </div>
+</div>

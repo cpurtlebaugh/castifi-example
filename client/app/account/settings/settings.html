@@ -1,0 +1,88 @@
+<div class="settings-container">
+  <div class="container well col-sm-6 col-xs-12">
+
+   <!-- <div ng-controller="SettingsEmailCtrl"> -->
+    <!-- change email -->
+   <!--  <div class="row" ng-hide="user.facebook.id">
+      <div class="col-sm-6 col-sm-offset-3">
+        <h3>Change Email</h3>
+      </div>
+      <div class="col-sm-6 col-sm-offset-3"> -->
+    <!-- email form -->
+<!--         <form class="form" name="emailForm" ng-submit="changeEmail(emailForm)" novalidate>
+
+          <div class="form-group"> -->
+        <!-- old email -->
+<!--             <input type="email" name="email" class="form-control" placeholder="Old Email" ng-model="user.email"
+                   mongoose-error />
+          </div> -->
+
+        <!-- new email -->
+<!--           <div class="form-group">
+
+            <input type="email" name="newEmail" class="form-control" placeholder="New Email" ng-model="user.newEmail"
+                   required
+                   mongoose-error/>
+            <p class="text-danger help-block" ng-show="emailForm.newEmail.$error.mongoose">
+                {{ errors.other }}
+            </p>
+          </div>
+
+          <p class="text-success"> {{ emailMessage }} </p>
+
+          <button class="btn btn-primary" type="submit">Save changes</button>
+        </form> -->
+        <!-- end password form -->
+
+<!--       </div>
+    </div> -->
+    <!-- end change email -->
+   <!-- </div> -->
+
+   <div ng-controller="SettingsCtrl">
+    <!-- change password -->
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+        <h3>Change Password</h3>
+      </div>
+      <div class="col-sm-6 col-sm-offset-3">
+
+        <!-- password form -->
+        <form class="form" name="passwordForm" ng-submit="changePassword(passwordForm)" novalidate>
+
+          <div class="form-group">
+   <!-- old password -->
+            <input type="password" name="password" class="form-control" placeholder="Old Password" ng-model="user.oldPassword"
+                   mongoose-error />
+            <p class="help-block" ng-show="passwordForm.password.$error.mongoose">
+                {{ errors.other }}
+            </p>
+          </div>
+
+  <!-- new password -->
+          <div class="form-group">
+
+            <input type="password" name="newPassword" class="form-control" placeholder="New Password" ng-model="user.newPassword"
+                   ng-minlength="8"
+                   required/>
+            <p class="help-block"
+               ng-show="(passwordForm.newPassword.$error.minlength || passwordForm.newPassword.$error.required) && (passwordForm.newPassword.$dirty || submitted)">
+              New password must be at least 8 characters.
+            </p>
+          </div>
+
+          <p class="text-success"> {{ message }} </p>
+
+          <button class="btn btn-primary" type="submit">Save changes</button>
+        </form>
+        <!-- end password form -->
+      </div>
+    </div>
+    <!-- change password -->
+  </div>
+
+
+
+
+  </div>
+</div>

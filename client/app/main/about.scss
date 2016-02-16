@@ -1,0 +1,71 @@
+.about-container{
+	background-color: $brand-info;
+	font-family: 'Montserrat Light', sans-serif;
+	color: white;
+	padding: 50px 0px;
+	margin-top: -20px;
+	h1{
+		color: white;
+	}
+	h4{	
+		font-size: 18px;
+		line-height: 30px;
+	}
+}
+
+.about-lalaland {
+  background-image: url("https://s3-us-west-1.amazonaws.com/castifistaticassets/LaLaland-About-Desktop.svg"); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 200px;
+  background-color: $brand-info;
+}
+
+.about-footer{
+	background-color: #54aed3;
+	padding-top: 50px;
+	position: relative;
+	h1{
+		text-align: center;
+	    color: white;
+	    background-color: #3db39e;
+	    padding: 10px;
+	    border-radius: 11.5px;
+	}
+	img{
+		width:100%;
+	}
+	h4{
+		font-size: 24px;
+		text-align: center;
+		white-space: nowrap;
+	}
+	h5{
+		font-size: 16px;
+		color: $brand-info;
+		text-align: center;
+	}
+	.row{
+		padding: 20px 0px;
+	}
+	.second{
+		padding-right:50px;
+	}
+}
+
+/* Media Breakpoints */
+
+@media only screen and (max-width: $screen-xs) {
+
+	.about-container{
+		padding: 50px 15px 0px 15px;
+	}
+
+	.about-footer{
+		padding: 0px 15px;
+		.second{
+			padding-right:0px;
+		}
+}
+
+}

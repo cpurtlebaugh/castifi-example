@@ -1,0 +1,1307 @@
+<!-- admin actors photos -->
+<div class="row">
+    <div class="col-sm-2">
+      <br>
+      <img class="header-icon" src="https://s3-us-west-1.amazonaws.com/castifistaticassets/polaroid.svg" >
+    </div>
+    <div class="col-sm-10">
+      <h3>Admin Actor Photos</h3>
+      <h5>{{actor.legalFirstName | capitalize }} {{ actor.legalLastName | capitalize}} / {{actor.email}}</h5>
+      <h4 class="text-danger">2MB maximum file size allowed</h4>
+      <br>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row photos">
+    <div class="col-sm-4">
+     <img ngf-thumbnail="headShot || actor.headShot || 'assets/images/actor/picturebox.svg'">
+         <h5>Headshot</h5>
+          <input type="file" ng-model="headShot" ngf-max-size="2MB" ngf-select="uploadFiles($file, $invalidFiles, 'headShot')" accept="jpg,.jpeg, .png">
+          </input>
+             <div class="text-danger" ng-show="headShow"> {{errMsg}}
+        <!--       <br>
+           <progressbar animate="true" value="dynamic" type="success" ng-if="dynamic > 0"><b>{{dynamic}}%</b></progressbar> -->
+            </div>
+            <button class="btn btn-sm btn-primary btn-remove" ng-click="removePhoto('headShot')" ng-show="headShot || actor.headShot">Remove</button>
+          <br>
+    </div>
+    <div class="col-sm-4">
+     <img ngf-thumbnail="headToToe || actor.headToToe || 'assets/images/actor/picturebox.svg'">
+        <h5>Head to Toe</h5>
+          <input type="file" ng-model="headToToe" ngf-max-size="2MB" ngf-select="uploadFiles($file, $invalidFiles, 'headToToe')" accept="jpg,.jpeg, .png">
+          </input>
+           <div class="text-danger" ng-show="toeShow"> {{errMsg}} </div>
+          <button class="btn btn-sm btn-primary btn-remove" ng-click="removePhoto('headToToe')" ng-show="headToToe || actor.headToToe">Remove</button>
+          <br>
+    </div>
+    <div class="col-sm-4">
+        <img ngf-thumbnail="realLife || actor.realLife || 'assets/images/actor/picturebox.svg'">
+           <h5>Real Life</h5>
+             <input type="file" ng-model="realLife" ngf-max-size="2MB" ngf-select="uploadFiles($file, $invalidFiles, 'realLife')"
+              accept="jpg,.jpeg, .png">
+          </input>
+           <div class="text-danger" ng-show="realShow"> {{errMsg}}</div>
+          <button class="btn btn-sm btn-primary btn-remove" ng-click="removePhoto('realLife')" ng-show="realLife || actor.realLife">Remove</button>
+    </div>
+
+  </div>
+  <br>
+<!-- end admin actors photos -->
+<div class="row">
+		<div class="col-sm-2">
+			<br>
+			<img class="header-icon" src="assets/images/actor/document.svg" >
+		</div>
+		<div class="col-sm-10">
+			<h3>Admin Actor Basic Information</h3>
+			<h5>{{actor.legalFirstName | capitalize }} {{ actor.legalLastName | capitalize}} / {{actor.email}}</h5>
+      <h6 class="text-danger"><span class="glyphicon glyphicon-asterisk text-danger"></span> Indicates a required field.</h6>
+		</div>
+	</div>
+	<br>
+	<br>
+     <!-- start form -->
+	 <form class="form actor-overview" name="form" ng-submit="register(form)" novalidate>
+	<!-- names -->
+	<div class="row">
+		<div class="col-sm-4">
+		    <div class="form-group" ng-class="{ 'has-success': form.firstname.$valid && submitted,
+                                               'has-error': form.firstname.$invalid && submitted }">
+            <label>First Name <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+            <input type="text" name="firstname" class="form-control" ng-model="actor.legalFirstName"
+	                 required/>
+            <p class="help-block" ng-show="form.firstname.$error.required && submitted">
+              A first name is required
+            </p>
+          </div>
+		</div>
+		<div class="col-sm-4">
+
+	         <div class="form-group" ng-class="{ 'has-success': form.lastname.$valid && submitted,
+	                                            'has-error': form.lastname.$invalid && submitted }">
+	          <label>Last Name <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+	          <input type="text" name="lastname" class="form-control" ng-model="actor.legalLastName"
+	                 required/>
+	          <p class="help-block" ng-show="form.lastname.$error.required && submitted">
+	            A last name is required
+	          </p>
+	        </div>
+
+		</div>
+		<div class="col-sm-4">
+			<div class="form-group">
+	          <label>Middle Name</label>
+	          <input type="text" name="middle" class="form-control" ng-model="actor.legalMiddleName"/>
+	        </div>
+
+		</div>
+	</div>
+	<!-- end names -->
+	<!-- dob and gender -->
+	<div class="row">
+		<div class="col-sm-6">
+        <label>Are you over 18? <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+        <br>
+        <div class="btn-group">
+          <label class="btn btn-primary" ng-model="actor.overEighteen" ng-required="!actor.overEighteen"btn-radio="false">No</label>
+          <label class="btn btn-primary" ng-model="actor.overEighteen" ng-required="!actor.overEighteen"btn-radio="true">Yes</label>
+        </div>
+        <p class="help-block" ng-show="!actor.overEighteen && submitted">
+              <span class="text-danger"> You must be over 18. </span>
+        </p>
+
+        <!-- <p>The control is: {{ testForm.flavor.$valid ? 'valid' : 'invalid' }}</p>
+    <p>The "required" validator is: {{ testForm.flavor.$error.required ? 'not satisfied' : 'satisfied' }}</p> -->
+		</div>
+
+		<div class="col-sm-6">
+		<label>Gender</label>
+        <br>
+	        <div class="btn-group">
+	          <label class="btn btn-primary" ng-model="actor.gender" btn-radio="'male'">Male</label>
+	          <label class="btn btn-primary" ng-model="actor.gender" btn-radio="'female'">Female</label>
+	          <label class="btn btn-primary" ng-model="actor.gender" btn-radio="'neutral'">Neutral</label>
+	        </div>
+		</div>
+	</div>
+	<br>
+	<!-- end dob and gender -->
+	<!-- phone number -->
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="form-group" ng-class="{ 'has-success': form.phone.$valid && submitted,
+                                             'has-error': form.phone.$invalid && submitted }">
+          <label>Phone Number <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+          <input type="text" name="phone" class="form-control" ng-model="actor.contact.mainPhoneNum"
+                 required
+                 ng-pattern="onlyNumbers"
+                 ng-minlength="10"
+                 ng-maxlength="10"/>
+          <p class="help-block" ng-show="form.phone.$error.required && submitted">
+            A phone number is required
+          </p>
+            <p class="help-block"
+             ng-show="(form.phone.$error.minlength || form.phone.$error.maxlength) && submitted">
+            Phone number must be 10 numbers.
+          </p>
+           <p class="help-block"
+             ng-show="form.phone.$error.pattern && submitted">
+            Phone number must be numbers and not letters.
+          </p>
+        </div>
+
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+  <!-- address apt num -->
+  <div class="row">
+    <div class="col-sm-9">
+
+      <div class="form-group" ng-class="{ 'has-success': form.address.$valid && submitted,
+                                             'has-error': form.address.$invalid && submitted }">
+              <label>Please fill out your full mailing address <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+                <input type="text" name="address" class="form-control"
+                placeholder="Mailing Address"
+                ng-autocomplete
+                ng-model="actor.contact.fullAddress"
+                options="options"
+                details="details"
+                ng-minlength="18"
+                required/>
+                <p class="help-block" ng-show="form.address.$error.required && submitted">
+                A full address is required.
+                </p>
+                 <p class="help-block"
+                 ng-show="form.address.$error.minlength && submitted">
+                 Please include full autocomplete address.
+              </p>
+           </div>
+
+    </div>
+    <div class="col-sm-3">
+
+       <div class="form-group" ng-class="{ 'has-success': form.apartment.$valid && submitted,
+                                                  'has-error': form.apartment.$invalid && submitted }">
+                <label>Apartment or Suite</label>
+                <input type="text" name="apartment" class="form-control" ng-model="actor.contact.aptNum"/>
+              </div>
+
+    </div>
+  </div>
+  <!-- end address apt num -->
+	<!-- end phone number -->
+	<!-- address apt num -->
+	<!-- <div class="row">
+		<div class="col-sm-9">
+
+              <div class="form-group" ng-class="{ 'has-success': form.address.$valid && submitted,
+                                                  'has-error': form.address.$invalid && submitted }">
+                <label>Address <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+                <input type="text" name="address" class="form-control" ng-model="actor.contact.address"
+                       required/>
+                <p class="help-block" ng-show="form.address.$error.required && submitted">
+                  An address is required
+                </p>
+              </div>
+
+		</div>
+		<div class="col-sm-3">
+			 <div class="form-group" ng-class="{ 'has-success': form.apartment.$valid && submitted,
+                                                  'has-error': form.apartment.$invalid && submitted }">
+                <label>Apartment</label>
+                <input type="text" name="apartment" class="form-control" ng-model="actor.contact.aptNum"/>
+              </div>
+		</div>
+	</div> -->
+	<!-- end address apt num -->
+	<!-- city state zip country -->
+	<!-- <div class="row">
+		<div class="col-sm-4">
+			  <div class="form-group" ng-class="{ 'has-success': form.city.$valid && submitted,
+                                             'has-error': form.city.$invalid && submitted }">
+		          <label>City <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+		          <input type="text" name="city" class="form-control" ng-model="actor.contact.city"
+		                 required/>
+		          <p class="help-block" ng-show="form.city.$error.required && submitted">
+		            A city is required
+		          </p>
+		        </div>
+		</div>
+		<div class="col-sm-2">
+			 <div class="form-group" ng-class="{ 'has-success': form.state.$valid && submitted,
+                                               'has-error': form.state.$invalid && submitted }">
+            <label>State <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+            <input type="text" name="state" style="text-transform: uppercase" class="form-control" ng-model="actor.contact.state"
+                   required/>
+            <p class="help-block" ng-show="form.state.$error.required && submitted">
+              A state is required
+            </p>
+          </div>
+
+		</div>
+		<div class="col-sm-3">
+			 <div class="form-group" ng-class="{ 'has-success': form.zipcode.$valid && submitted,
+                                               'has-error': form.zipcode.$invalid && submitted }">
+            <label>Zipcode <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+            <input type="number" name="zipcode" class="form-control" ng-model="actor.contact.zipCode"
+                   required/>
+            <p class="help-block" ng-show="form.zipcode.$error.required && submitted">
+              A zipcode is required
+            </p>
+          </div>
+		</div>
+		<div class="col-sm-3">
+			 <div class="form-group" ng-class="{ 'has-success': form.country.$valid && submitted,
+                                            'has-error': form.country.$invalid && submitted }">
+          <label>Country <span class="glyphicon glyphicon-asterisk text-danger"></span></label>
+          <input type="text" name="country" style="text-transform: uppercase" class="form-control" ng-model="actor.contact.country"
+                 required/>
+          <p class="help-block" ng-show="form.country.$error.required && submitted">
+            A country is required
+          </p>
+        </div>
+
+		</div>
+	</div> -->
+	<!-- end city state zip country -->
+	<!-- union or non union -->
+	<div class="row">
+		<div class="col-sm-6">
+			<label>Non-Union or Union</label>
+        	<br>
+	        <div class="btn-group">
+	          <label class="btn btn-primary" ng-model="actor.info.union" btn-radio="false">Non-Union</label>
+	          <label class="btn btn-primary" ng-model="actor.info.union" btn-radio="true">SAG-AFTRA</label>
+	        </div>
+		</div>
+		<div class="col-sm-6">
+      <label>Are you SAG eligible?</label>
+          <br>
+          <div class="btn-group">
+            <label class="btn btn-primary" ng-model="actor.info.sagEligible" btn-radio="false">No</label>
+            <label class="btn btn-primary" ng-model="actor.info.sagEligible" btn-radio="true">Yes</label>
+          </div>
+    </div>
+	</div>
+	<!-- end union or non inion -->
+	<!-- same union legal name -->
+	<br>
+	<div class="row">
+		<div class="col-sm-10">
+			<label>My Union Name Is The Same As Legal Name</label>
+        	<br>
+	        <div class="btn-group">
+	          <label class="btn btn-primary" ng-model="actor.info.unionSameLegalName" btn-radio="true">Yes</label>
+	          <label class="btn btn-primary" ng-model="actor.info.unionSameLegalName" btn-radio="false">No</label>
+	        </div>
+		</div>
+		<div class="col-sm-2"></div>
+	</div>
+	<!-- end same union legal name -->
+	<!-- union name -->
+	<div ng-if="actor.info.unionSameLegalName === false">
+	<br>
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="form-group">
+              <label>Union First Name</label>
+              <input type="text" name="name" class="form-control" ng-model="actor.info.unionFirstName"/>
+            </div>
+		</div>
+		<div class="col-sm-4">
+             <div class="form-group">
+              <label>Union Last Name</label>
+              <input type="text" name="first" class="form-control" ng-model="actor.info.unionLastName"/>
+            </div>
+		</div>
+		<div class="col-sm-4">
+            <div class="form-group">
+              <label>Union Middle Name</label>
+              <input type="text" name="middle" class="form-control" ng-model="actor.info.unionMiddleName"/>
+            </div>
+		</div>
+	</div>
+	</div>
+	<br>
+	<!-- end union name -->
+	<!-- acting since -->
+  <div class="row">
+    <div class="col-sm-10">
+      <label>Are you new to background acting?</label>
+          <br>
+          <div class="btn-group">
+            <label class="btn btn-primary" ng-model="actor.info.newActor" btn-radio="true">Yes</label>
+            <label class="btn btn-primary" ng-model="actor.info.newActor" btn-radio="false">No</label>
+          </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+  <!-- ng-if -->
+  <div ng-if="actor.info.newActor === false">
+  <br>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label>Acting Since</label>
+            <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="actor.info.actingSince" close-text="close" is-open="$parent.opened"/>
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </p>
+        </div>
+      </div>
+    </div>
+  </div>
+	<!-- ng-if -->
+	<br>
+	<!-- end acting since -->
+   <div class="row">
+
+    <div class="col-sm-12">
+          <label>Are you comfortable with...</label>
+<!-- i am willing to...nudity, kissing, change hair -->
+
+        <div class="row">
+
+  <!-- nudity -->
+          <div class="col-sm-4 col-md-3">
+            <div>
+              <input type="checkbox" ng-model="actor.willing.kissing"/>
+              <label>Kissing</label><br>
+              <input type="checkbox" ng-model="actor.willing.kissingSameSex"/>
+              <label>Same-Sex Kissing</label><br>
+              <input type="checkbox" ng-model="actor.willing.partialNudity"/>
+              <label>Partial Nudity</label><br>
+
+            </div>
+          </div>
+  <!-- end nudity -->
+  <!-- change hair -->
+          <div class="col-sm-4 col-md-3">
+           	<input type="checkbox" ng-model="actor.willing.fullNudity"/>
+              <label>Full Nudity</label><br>
+              <input type="checkbox" ng-model="actor.willing.cutHair"/>
+              <label>Cutting Hair</label><br>
+              <input type="checkbox" ng-model="actor.willing.colorHair"/>
+              <label>Coloring Hair</label><br>
+
+          </div>
+  <!-- end hair -->
+  		  <div class="col-sm-4 col-md-3">
+  		  	   <input type="checkbox" ng-model="actor.willing.drag"/>
+                <label>Cross-Dressing</label><br>
+  		  		<input type="checkbox" ng-model="actor.willing.eatMeat"/>
+               <label>Eating Meat</label><br>
+               	<input type="checkbox" ng-model="actor.willing.travel"/>
+               <label>Traveling</label><br>
+  		  </div>
+    </div>
+<!-- end i am willing to...nudity, kissing, change hair -->
+ <!-- end are you willing  -->
+</div>
+
+	<!-- aboutme and movie quote -->
+	<div class="row">
+<!-- 		<div class="col-sm-6"> <br>
+			 <div class="form-group">
+	              <label>About Me</label>
+	              <textarea class="form-control capitalize-override" rows="3" ng-model="actor.info.aboutMe"></textarea>
+        	</div>
+		</div> -->
+		<div class="col-sm-6"> <br>
+			<div class="form-group">
+	              <label>Favorite Movie Quote/Line</label>
+	              <textarea class="form-control capitalize-override" rows="3" ng-model="actor.info.movieQuote"></textarea>
+        	</div>
+
+		</div>
+	</div>
+	<!-- end aboutme and movieqoute -->
+	<!-- end overview -->
+	<!-- begin physical -->
+	  <div class="row">
+    <div class="col-sm-2">
+      <br>
+      <img class="header-icon" src="assets/images/actor/boy.svg">
+    </div>
+    <div class="col-sm-10">
+      <h3>Admin Actor Physical Appearance</h3>
+       <h5>{{actor.legalFirstName | capitalize }} {{ actor.legalLastName | capitalize}} / {{actor.email}}</h5>
+    </div>
+  </div>
+  <br>
+  <br>
+
+<!--  age portrayal, height, weight -->
+<div class="row">
+  <div class="col-sm-2 col-md-2">
+    <div class="form-group">
+
+        <div class="form-group">
+        <label style="white-space: nowrap">Portrayable Age</label>
+          <select class="form-control"
+              ng-model="actor.appearance.portrayAgeMin"
+              ng-options="obj as obj for obj in minAgeOptions"
+              >
+            <option value="" disabled selected>Min</option>
+          </select>
+        </div>
+    </div>
+  </div>
+
+  <div class="col-sm-2 col-md-2">
+    <div class="form-group">
+      <label style="visibility: hidden">.</label>
+        <div class="form-group">
+
+          <select class="form-control"
+          ng-model="actor.appearance.portrayAgeMax"
+          ng-options="obj as obj for obj in maxAgeOptions">
+            <option value="" disabled selected>Max</option>
+          </select>
+        </div>
+    </div>
+  </div>
+
+    <div class="col-sm-4 col-md-4">
+     <div class="form-group">
+       <label>Weight (lbs.)</label>
+        <div class="form-group">
+            <select class="form-control"
+                ng-model="actor.appearance.weight"
+                ng-options="obj as obj for obj in weightOptions"
+                >
+                <option value="" disabled selected>Weight</option>
+            </select>
+        </div>
+    </div>
+  </div>
+
+    <div class="form-group col-sm-2 col-md-2">
+      <label>Height</label>
+        <select class="form-control"
+        ng-model="actor.appearance.heightFeet"
+        ng-options="obj as obj for obj in heightFeetOptions">
+          <option value="" disabled selected>Feet</option>
+        </select>
+    </div>
+
+    <div class="form-group col-sm-2 col-md-2">
+      <label style="visibility: hidden">.</label>
+        <select class="form-control"
+        ng-model="actor.appearance.heightInches"
+        ng-options="obj as obj for obj in heightInchesOptions">
+          <option value="" disabled selected>Inches</option>
+        </select>
+    </div>
+</div>
+
+<!--  end age portrayal, height, weight -->
+
+<!-- body type, complexion -->
+<div class="row">
+
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label>Body Type</label>
+      <select class="form-control" ng-model="actor.appearance.bodyType">
+        <option value="bodybuilder">Bodybuilder</option>
+        <option value="athletic">Athletic</option>
+        <option value="average">Average</option>
+        <option value="lanky">Lanky</option>
+        <option value="thin">Thin</option>
+        <option value="overweight">Overweight</option>
+        <option value="obese">Obese</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="form-group">
+      <label>Complexion</label>
+      <select class="form-control" ng-model="actor.appearance.complexion">
+        <option value="dark">Dark</option>
+        <option value="fair">Fair</option>
+        <option value="olive">Olive</option>
+        <option value="light">Light</option>
+        <option value="ruddy">Ruddy</option>
+        <option value="tan">Tan</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="form-group">
+        <label>Eye Color</label>
+        <select class="form-control" ng-model="actor.appearance.eyeColor">
+          <option value="brown">Brown</option>
+          <option value="blue">Blue</option>
+          <option value="black">Black</option>
+          <option value="hazel">Hazel</option>
+          <option value="green">Green</option>
+        </select>
+    </div>
+  </div>
+</div>
+<!-- end body type, complexion -->
+
+<!-- ethnic appearance and hair -->
+<div class="row">
+
+  <!-- hair -->
+   <div class="col-sm-4">
+      <div class="form-group">
+          <label>Hair Length</label>
+          <select class="form-control" ng-model="actor.appearance.hairLength">
+            <option value="buzzed">Buzzed</option>
+            <option value="short">Short</option>
+            <option value="shoulder">Shoulder</option>
+            <option value="long">Long</option>
+            <option value="bald">Bald</option>
+          </select>
+      </div>
+    </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label>Hair Color</label>
+          <select class="form-control" ng-model="actor.appearance.hairColor">
+            <option value="auburn">Auburn</option>
+            <option value="red">Red</option>
+            <option value="white">White</option>
+            <option value="blonde">Blonde</option>
+            <option value="brown">Brown</option>
+            <option value="black">Black</option>
+            <option value="grey">Grey</option>
+            <option value="saltpepper">Salt/Pepper</option>
+          </select>
+      </div>
+   </div>
+ </div>
+
+   <!-- end hair -->
+
+<!-- end ethnic appearance and hair -->
+<br>
+<!-- facial hair, facial hair color, facial hair style -->
+<div class="row">
+  <div class="col-sm-4">
+    <label>Do You Have Facial Hair?</label>
+      <br>
+      <div class="btn-group">
+        <label class="btn btn-primary" ng-model="actor.appearance.facialHairPresent" btn-radio="false">No</label>
+        <label class="btn btn-primary" ng-model="actor.appearance.facialHairPresent" btn-radio="true">Yes</label>
+      </div>
+  </div>
+
+  <div class="col-sm-4">
+      <div class="form-group" ng-if="actor.appearance.facialHairPresent">
+        <label>Facial Hair Color</label>
+        <select class="form-control" ng-model="actor.appearance.facialHairColor">
+            <option value="auburn">Auburn</option>
+            <option value="red">Red</option>
+            <option value="white">White</option>
+            <option value="blonde">Blonde</option>
+            <option value="brown">Brown</option>
+            <option value="black">Black</option>
+            <option value="grey">Grey</option>
+            <option value="saltpepper">Salt/Pepper</option>
+        </select>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="form-group" ng-if="actor.appearance.facialHairPresent">
+        <label>Facial Hair Style</label>
+        <select class="form-control" ng-model="actor.appearance.facialHairStyle">
+          <option value="none">None</option>
+          <option value="stubble">Stubble</option>
+          <option value="mustache">Mustache</option>
+          <option value="goatee">Goatee</option>
+          <option value="cleanshaven">Clean Shaven</option>
+          <option value="shortbeard">Short Beard</option>
+          <option value="longbeard">Long Beard</option>
+          <option value="soulpatch">Soul Patch</option>
+        </select>
+      </div>
+  </div>
+</div>
+<!-- end facial hair, facial hair color, facial hair style -->
+<br>
+<!-- ethnic appearance -->
+<div class="row">
+    <div class="col-sm-12">
+        <label>Ethnic Appearance (pick up to 3)</label>
+    </div>
+    <!-- ethnic looks -->
+      <div class="col-sm-6 col-xs-6">
+          <input type="checkbox" ng-model="actor.ethnicLook.asian"/>
+          <label>Asian</label><br>
+          <input type="checkbox" ng-model="actor.ethnicLook.africanAmerican"/>
+          <label>African American</label><br>
+          <input type="checkbox" ng-model="actor.ethnicLook.caucasian"/>
+          <label>Caucasian</label><br>
+          <input type="checkbox" ng-model="actor.ethnicLook.easternIndian"/>
+          <label>East Indian</label><br>
+      </div>
+    <!-- ethnic looks -->
+      <div class="col-sm-6 col-xs-6">
+          <input type="checkbox" ng-model="actor.ethnicLook.hispanic"/>
+          <label>Hispanic</label><br>
+          <input type="checkbox" ng-model="actor.ethnicLook.middleEastern"/>
+          <label>Middle Eastern</label><br>
+          <input type="checkbox" ng-model="actor.ethnicLook.nativeAmerican"/>
+          <label>Native American</label><br>
+          <input type="checkbox" ng-model="actor.ethnicLook.pacificIslander"/>
+          <label>Pacific Islander</label><br>
+      </div>
+  </div>
+<!-- end ethnic appearance -->
+<br>
+<!-- twin or triplet-->
+<div class="row">
+  <div class="col-sm-6 col-md-6">
+    <label>Are You a Twin?</label><br>
+      <div class="btn-group">
+        <label class="btn btn-primary" ng-model="actor.appearance.twins" btn-radio="false">No</label>
+        <label class="btn btn-primary" ng-model="actor.appearance.twins" btn-radio="true">Yes</label>
+      </div>
+  </div>
+
+  <div class="col-sm-6 col-md-6">
+    <label>Are You a Triplet?</label><br>
+      <div class="btn-group">
+        <label class="btn btn-primary" ng-model="actor.appearance.triplet" btn-radio="false">No</label>
+        <label class="btn btn-primary" ng-model="actor.appearance.triplet" btn-radio="true">Yes</label>
+      </div>
+  </div>
+</div>
+<!-- end twin or triplet-->
+<br>
+<!-- are you pregnant, due date -->
+<div class="row">
+  <div class="col-sm-6 col-md-6">
+    <label>Are You Pregnant?</label><br>
+      <div class="btn-group">
+        <label class="btn btn-primary" ng-model="actor.appearance.pregnant" btn-radio="false">No</label>
+        <label class="btn btn-primary" ng-model="actor.appearance.pregnant" btn-radio="true">Yes</label>
+      </div>
+  </div>
+
+  <div class="col-sm-6 col-md-6">
+      <div class="form-group" ng-if="actor.appearance.pregnant">
+        <label>Due Date</label>
+              <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="actor.appearance.pregnantDueDate" close-text="close" is-open="$parent.opened"/>
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+              </p>
+      </div>
+  </div>
+</div>
+<!-- end are you pregnant, due date -->
+<br>
+
+<!-- tattoos and piercings -->
+<div class="row">
+    <div class="col-sm-6">
+      <label>Do you have tattoos?</label><br>
+        <div class="btn-group">
+          <label class="btn btn-primary" ng-model="actor.tattoos.present" btn-radio="false">No</label>
+          <label class="btn btn-primary" ng-model="actor.tattoos.present" btn-radio="true">Yes</label>
+        </div>
+    <!-- ng-if tattoos present-->
+      <br>
+      <div ng-if="actor.tattoos.present">
+        <div class="row"> <br>
+          <div class="col-sm-3">
+            <input type="checkbox" ng-model="actor.tattoos.forearm"/>
+            <label>Forearm</label><br>
+            <input type="checkbox" ng-model="actor.tattoos.upperArm"/>
+            <label>Upper Arm</label><br>
+            <input type="checkbox" ng-model="actor.tattoos.neck"/>
+            <label>Neck</label><br>
+            <input type="checkbox" ng-model="actor.tattoos.face"/>
+            <label>Face</label><br>
+            <input type="checkbox" ng-model="actor.tattoos.chest"/>
+            <label>Chest</label><br>
+          </div>
+
+          <div class="col-sm-3">
+            <input type="checkbox" ng-model="actor.tattoos.stomach"/>
+            <label>Stomach</label><br>
+            <input type="checkbox" ng-model="actor.tattoos.back"/>
+            <label>Back</label><br>
+            <input type="checkbox" ng-model="actor.tattoos.hand"/>
+            <label>Hand</label><br>
+            <input type="checkbox" ng-model="actor.tattoos.leg"/>
+            <label>Leg</label><br>
+            <input type="checkbox" ng-model="actor.tattoos.foot"/>
+            <label>Foot</label><br>
+          </div>
+        </div>
+
+      </div>
+    <!-- end ng-if tattoos-->
+    </div>
+  <!-- end tattoos -->
+
+  <!-- piercings -->
+
+    <div class="col-sm-6">
+      <label>Do you have piercings?</label><br>
+        <div class="btn-group">
+          <label class="btn btn-primary" ng-model="actor.piercings.present" btn-radio="false">No</label>
+          <label class="btn btn-primary" ng-model="actor.piercings.present" btn-radio="true">Yes</label>
+        </div>
+
+    <!-- ng-if piercings present-->
+
+      <div ng-if="actor.piercings.present">
+
+        <div class="row">
+          <br>
+          <div class="col-sm-3">
+            <input type="checkbox" ng-model="actor.piercings.ear"/>
+            <label>Ears</label><br>
+            <input type="checkbox" ng-model="actor.piercings.nose"/>
+            <label>Nose</label><br>
+            <input type="checkbox" ng-model="actor.piercings.eyebrow"/>
+            <label>Eyebrow</label><br>
+          </div>
+
+          <div class="col-sm-3">
+            <input type="checkbox" ng-model="actor.piercings.lip"/>
+            <label>Lip</label><br>
+            <input type="checkbox" ng-model="actor.piercings.tongue"/>
+            <label>Tongue</label><br>
+            <input type="checkbox" ng-model="actor.piercings.navel"/>
+            <label>Navel</label><br>
+          </div>
+
+        </div>
+    </div>
+  </div>
+</div>
+<br>
+    <!-- end ng-if piercings -->
+  <!-- end piercings -->
+<!-- end tattoos and piercings -->
+
+<!-- amputee and disabilities -->
+  <div class="row">
+    <div class="col-sm-6">
+      <label>Do You Have Any Disabilities?</label> <br>
+      <div class="btn-group">
+        <label class="btn btn-primary" ng-model="actor.disabled.present" btn-radio="false">No</label>
+        <label class="btn btn-primary" ng-model="actor.disabled.present" btn-radio="true">Yes</label>
+      </div>
+
+  <!-- ng-if disabled present-->
+    <div ng-if="actor.disabled.present">
+      <br>
+      <input type="checkbox" ng-model="actor.disabled.blind"/>
+      <label>Blind</label><br>
+      <input type="checkbox" ng-model="actor.disabled.impairedHearing"/>
+      <label>Hearing Impaired</label><br>
+      <input type="checkbox" ng-model="actor.disabled.deaf"/>
+      <label>Deaf</label><br>
+      <input type="checkbox" ng-model="actor.disabled.mute"/>
+      <label>Mute</label><br>
+      <input type="checkbox" ng-model="actor.disabled.usesWheelchair"/>
+      <label>Wheelchair</label><br>
+    </div>
+    <!-- end ng-if -->
+    </div>
+    <!-- end disabled -->
+
+    <!-- start amputee -->
+    <div class="col-sm-6">
+     <label>Are you an amputee?</label><br>
+        <div class="btn-group">
+          <label class="btn btn-primary" ng-model="actor.amputee.present" btn-radio="false">No</label>
+          <label class="btn btn-primary" ng-model="actor.amputee.present" btn-radio="true">Yes</label>
+       </div>
+
+  <!-- ng-if amputee present-->
+      <div ng-if="actor.amputee.present">
+        <br>
+        <input type="checkbox" ng-model="actor.amputee.arm"/>
+        <label>Arm</label><br>
+        <input type="checkbox" ng-model="actor.amputee.hand"/>
+        <label>Hand</label><br>
+        <input type="checkbox" ng-model="actor.amputee.finger"/>
+        <label>Finger</label><br>
+        <input type="checkbox" ng-model="actor.amputee.leg"/>
+        <label>Leg</label><br>
+        <input type="checkbox" ng-model="actor.amputee.foot"/>
+        <label>Foot</label><br>
+      </div>
+    <!-- end ng-if -->
+    </div>
+    <!-- end amputee -->
+  </div>
+	<!-- end amputee and disabilities -->
+	<!-- end physical -->
+	<!-- begin wardrobe -->
+	<div class="row">
+    <div class="col-sm-2">
+      <br>
+      <img class="header-icon" src="assets/images/actor/wardrobe.svg">
+    </div>
+    <div class="col-sm-10">
+      <h3>Admin Actor Wardrobe</h3>
+      <h5>{{actor.legalFirstName | capitalize }} {{ actor.legalLastName | capitalize}} / {{actor.email}}</h5>
+    </div>
+  </div>
+  <br>
+  <br>
+
+  <div class="row">
+
+    <!-- basic wardrobe -->
+    <div class="col-sm-6">
+      <label>Do you own any of these basic items?</label>
+        <div class="row">
+          <div class="col-sm-6">
+              <input type="checkbox" ng-model="actor.wardrobe.tux"/>
+              <label>Tuxedo</label><br>
+              <input type="checkbox" ng-model="actor.wardrobe.fullSuit"/>
+              <label>Full Suit</label><br>
+              <input type="checkbox" ng-model="actor.wardrobe.businessSuit"/>
+              <label>Business Suit</label><br>
+          </div>
+          <div class="col-sm-6">
+              <input type="checkbox" ng-model="actor.wardrobe.bathingSuit"/>
+              <label>Bathing Suit</label><br>
+              <input type="checkbox" ng-model="actor.wardrobe.cocktailDress"/>
+              <label>Cocktail Dress</label><br>
+              <input type="checkbox" ng-model="actor.wardrobe.lingerie"/>
+              <label>Lingerie</label><br>
+          </div>
+        </div>
+      </div>
+    <!-- end wardrobe -->
+
+    <!-- uniforms -->
+     <div class="col-sm-6">
+      <label>Do you own any of these uniforms?</label>
+        <div class="row">
+          <div class="col-sm-6">
+              <input type="checkbox" ng-model="actor.costumes.doctor"/>
+              <label>Doctor</label><br>
+              <input type="checkbox" ng-model="actor.costumes.emt"/>
+              <label>EMT</label><br>
+              <input type="checkbox" ng-model="actor.costumes.nurse"/>
+              <label>Nurse</label><br>
+          </div>
+          <div class="col-sm-6">
+              <input type="checkbox" ng-model="actor.costumes.paramedic"/>
+              <label>Paramedic</label><br>
+              <input type="checkbox" ng-model="actor.costumes.fireDept"/>
+              <label>Fire Dept.</label><br>
+              <input type="checkbox" ng-model="actor.costumes.police"/>
+              <label>Police</label><br>
+          </div>
+        </div>
+      </div>
+      <!-- end uniforms -->
+       <!-- end row -->
+     </div>
+     <br>
+      <!-- male and female measurements -->
+  <div class="row">
+    <div class="col-sm-12">
+    <!-- men's clothing measurements -->
+    <label>Can You Provide Men's Clothing Measurements?</label> <br>
+      <div class="btn-group">
+        <label class="btn btn-primary" ng-model="actor.clothingMenSizes.present" btn-radio="false">No</label>
+        <label class="btn btn-primary" ng-model="actor.clothingMenSizes.present" btn-radio="true">Yes</label>
+      </div>
+
+        <div class="row">
+          <!-- ng-if -->
+         <div ng-if="actor.clothingMenSizes.present">
+          <br>
+          <!-- left male-->
+          <div class="col-sm-6">
+              <div class="form-group">
+                <label>Coat Length</label>
+                <select class="form-control" ng-model="actor.clothingMenSizes.coatLength">
+                  <option value="s">Short</option>
+                  <option value="r">Regular</option>
+                  <option value="l">Long</option>
+                  <option value="xl">Extra Long</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Coat Size</label>
+                <select class="form-control" ng-model="actor.clothingMenSizes.coatSize">
+                  <option value="36">36</option>
+                  <option value="38">38</option>
+                  <option value="40">40</option>
+                  <option value="42">42</option>
+                  <option value="44">44</option>
+                  <option value="46">46</option>
+                  <option value="48">48</option>
+                  <option value="50">50</option>
+                  <option value="52">52</option>
+                  <option value="54">54</option>
+                  <option value="56">56</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Shirt Sleeve</label>
+                <select class="form-control" ng-model="actor.clothingMenSizes.shirtSleeve">
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                  <option value="31.5">31.5</option>
+                  <option value="32">32</option>
+                  <option value="33">33</option>
+                  <option value="33.5">33.5</option>
+                  <option value="34">34</option>
+                  <option value="35">35</option>
+                  <option value="36">36</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Shirt Neck</label>
+                <select class="form-control" ng-model="actor.clothingMenSizes.shirtNeck">
+                  <option value="14.5">14.5</option>
+                  <option value="15">15</option>
+                  <option value="15.5">15.5</option>
+                  <option value="16">16</option>
+                  <option value="16.5">16.5</option>
+                  <option value="17">17</option>
+                  <option value="17.5">17.5</option>
+                  <option value="18">18</option>
+                  <option value="18.5">18.5</option>
+                  <option value="19">19</option>
+                  <option value="19.5">19</option>
+                  <option value="20">20</option>
+                  <option value="20.5">20.5</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                </select>
+              </div>
+          </div>
+          <!-- end left male-->
+          <!-- right male-->
+          <div class="col-sm-6">
+             <div class="form-group">
+                <label>Pant Waist</label>
+                <select class="form-control" ng-model="actor.clothingMenSizes.pantWaist">
+                  <option value="26">26</option>
+                  <option value="26.5">26.5</option>
+                  <option value="27">27</option>
+                  <option value="27.5">27.5</option>
+                  <option value="28">28</option>
+                  <option value="28.5">28.5</option>
+                  <option value="29">29</option>
+                  <option value="29.5">29.5</option>
+                  <option value="30">30</option>
+                  <option value="30.5">30.5</option>
+                  <option value="31">31</option>
+                  <option value="31.5">31.5</option>
+                  <option value="32">32</option>
+                  <option value="32.5">32.5</option>
+                  <option value="33">33</option>
+                  <option value="33.5">33.5</option>
+                  <option value="34">34</option>
+                  <option value="34.5">34.5</option>
+                  <option value="35">35</option>
+                  <option value="35.5">35.5</option>
+                  <option value="36">36</option>
+                  <option value="36.5">36.5</option>
+                  <option value="37">37</option>
+                  <option value="37.5">37.5</option>
+                  <option value="38">38</option>
+                  <option value="38.5">38.5</option>
+                  <option value="39">39</option>
+                  <option value="39.5">39.5</option>
+                  <option value="40">40</option>
+                  <option value="40.5">40.5</option>
+                  <option value="41">41</option>
+                  <option value="41.5">41.5</option>
+                  <option value="42">42</option>
+                  <option value="42.5">42.5</option>
+                  <option value="43">43</option>
+                  <option value="43.5">43.5</option>
+                  <option value="44">44</option>
+                  <option value="44.5">44.5</option>
+                  <option value="45">45</option>
+                  <option value="45.5">45.5</option>
+                  <option value="46">46</option>
+                  <option value="46.5">46.5</option>
+                  <option value="47">47</option>
+                  <option value="47.5">47.5</option>
+                  <option value="48">48</option>
+                  <option value="49.5">49.5</option>
+                  <option value="50">50</option>
+                  <option value="50.5">50.5</option>
+                  <option value="51">51</option>
+                  <option value="51.5">51.5</option>
+                  <option value="52">52</option>
+                  <option value="52.5">52.5</option>
+                  <option value="53">53</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Pant Inseam</label>
+                <select class="form-control" ng-model="actor.clothingMenSizes.pantInseam">
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                  <option value="32">32</option>
+                  <option value="33">33</option>
+                  <option value="34">34</option>
+                  <option value="35">35</option>
+                  <option value="36">36</option>
+                  <option value="37">37</option>
+                  <option value="38">38</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Hat Size</label>
+                <select class="form-control" ng-model="actor.clothingMenSizes.hat">
+                  <option value="xs">XS</option>
+                  <option value="s">S</option>
+                  <option value="m">M</option>
+                  <option value="l">L</option>
+                  <option value="xl">XL</option>
+                  <option value="xxl">XXL</option>
+                  <option value="xxxl">XXXL</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Glove Size</label>
+                <select class="form-control" ng-model="actor.clothingMenSizes.glove">
+                  <option value="xs">XS (6)</option>
+                  <option value="s">S (6.5)</option>
+                  <option value="m">M (7)</option>
+                  <option value="ml">M/L (7.5)</option>
+                  <option value="l">L (8)</option>
+                  <option value="xl">XL (8.5)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Shoe Size</label>
+                <select class="form-control" ng-model="actor.clothingMenSizes.shoe">
+                  <option value="7">7</option>
+                  <option value="7.5">7.5</option>
+                  <option value="8">8</option>
+                  <option value="8.5">8.5</option>
+                  <option value="9">9</option>
+                  <option value="9.5">9.5</option>
+                  <option value="10">10</option>
+                  <option value="10.5">10.5</option>
+                  <option value="11">11</option>
+                  <option value="11.5">11.5</option>
+                  <option value="12">12</option>
+                  <option value="12.5">12.5</option>
+                  <option value="13">13</option>
+                  <option value="13.5">13.5</option>
+                  <option value="14">14</option>
+                  <option value="14.5">14.5</option>
+                  <option value="15">15</option>
+                </select>
+              </div>
+          </div>
+          <!-- end right male -->
+        </div>
+        <!-- end ng-if -->
+      </div>
+    <!-- end men's clothing measurements -->
+    <br>
+    <!-- women's clothing measurements-->
+    <label>Can You Provide Women's Clothing Measurements?</label> <br>
+      <div class="btn-group">
+        <label class="btn btn-primary" ng-model="actor.clothingWomenSizes.present" btn-radio="false">No</label>
+        <label class="btn btn-primary" ng-model="actor.clothingWomenSizes.present" btn-radio="true">Yes</label>
+      </div>
+
+         <!-- ng-if -->
+         <div ng-if="actor.clothingWomenSizes.present"> <br>
+        <div class="row">
+
+          <!-- start women's left side -->
+          <div class="col-sm-6">
+            <div class="form-group">
+                <label>Pant Waist</label>
+                <select class="form-control" ng-model="actor.clothingWomenSizes.pantWaist">
+                  <option value="0">0</option>
+                  <option value="2">2</option>
+                  <option value="4">4</option>
+                  <option value="6">6</option>
+                  <option value="8">8</option>
+                  <option value="10">10</option>
+                  <option value="12">12</option>
+                  <option value="14">14</option>
+                  <option value="16">16</option>
+                  <option value="18">18</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Pant Inseam</label>
+                <select class="form-control" ng-model="actor.clothingWomenSizes.pantInseam">
+                  <option value="30">30</option>
+                  <option value="30.5">30.5</option>
+                  <option value="31">31</option>
+                  <option value="31.5">31.5</option>
+                  <option value="32">32</option>
+                  <option value="32.5">32.5</option>
+                  <option value="33">33</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Band Size</label>
+                <select class="form-control" ng-model="actor.clothingWomenSizes.bustSize">
+                  <option value="30">30</option>
+                  <option value="32">32</option>
+                  <option value="34">34</option>
+                  <option value="36">36</option>
+                  <option value="38">38</option>
+                  <option value="40">40</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Cup Size</label>
+                <select class="form-control" ng-model="actor.clothingWomenSizes.cupSize">
+                  <option value="AA">AA</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                  <option value="DD">DD</option>
+                  <option value="DDD">DDD</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Hips</label>
+                <select class="form-control" ng-model="actor.clothingWomenSizes.hips">
+                  <option value="33">33</option>
+                  <option value="34">34</option>
+                  <option value="35">35</option>
+                  <option value="36">36</option>
+                  <option value="37">37</option>
+                  <option value="38">38</option>
+                  <option value="39">39</option>
+                  <option value="40">40</option>
+                  <option value="41">41</option>
+                  <option value="42">42</option>
+                  <option value="43">43</option>
+                  <option value="44">44</option>
+                  <option value="45">45</option>
+                  <option value="46">46</option>
+                </select>
+              </div>
+          </div>
+          <!-- end women's left side -->
+
+          <!-- start women's right side-->
+
+          <div class="col-sm-6">
+               <div class="form-group">
+                <label>Dress Size</label>
+                <select class="form-control" ng-model="actor.clothingWomenSizes.dress">
+                  <option value="0">0</option>
+                  <option value="2">2</option>
+                  <option value="4">4</option>
+                  <option value="6">6</option>
+                  <option value="8">8</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Shoes</label>
+                <select class="form-control" ng-model="actor.clothingWomenSizes.shoe">
+                <!--  <option value="4">4</option>
+                  <option value="4.5">4.5</option> -->
+                  <option value="5">5</option>
+                  <option value="5.5">5.5</option>
+                  <option value="6">6</option>
+                  <option value="6.5">6.5</option>
+                  <option value="7">7</option>
+                  <option value="7.5">7.5</option>
+                  <option value="8">8</option>
+                  <option value="8.5">8.5</option>
+                  <option value="9">9</option>
+                  <option value="9.5">9.5</option>
+                  <option value="10">10</option>
+                  <option value="10.5">10.5</option>
+                  <option value="11">11</option>
+                  <option value="11.5">11.5</option>
+                  <option value="12">12</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Hat</label>
+                <select class="form-control" ng-model="actor.clothingWomenSizes.hat">
+                  <option value="xs">XS</option>
+                  <option value="s">S</option>
+                  <option value="m">M</option>
+                  <option value="l">L</option>
+                  <option value="xl">XL</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Gloves</label>
+                <select class="form-control" ng-model="actor.clothingWomenSizes.glove">
+                  <option value="xs">XS (6)</option>
+                  <option value="s">S (6.5)</option>
+                  <option value="m">M (7)</option>
+                  <option value="ml">M/L (7.5)</option>
+                  <option value="l">L (8)</option>
+                  <option value="xl">XL (8.5)</option>
+                </select>
+              </div>
+
+          </div>
+
+          <!-- end women's right side -->
+        </div>
+    <!-- end women's clothing measurements -->
+        <!-- end ng-if -->
+      </div>
+
+     </div>
+    </div>
+<!-- end male and female measurements -->
+	<!-- end wardrobe -->
+	<!-- submit button -->
+	<div class="row">
+	    <div class="col-sm-5"></div>
+        <div class="col-sm-2 text-center">
+	            <button class="btn btn-lg btn-success" type="submit">
+	              Save
+	            </button>
+        </div>
+    	<div class="col-sm-5"></div>
+    </div>
+    <!-- end submit button -->
+    <br>
+    <br>
+    <!-- need help -->
+    <div class="row">
+    	<div class="col-sm-10 col-xs-4"></div>
+        <div class="col-sm-2 col-xs-4 text-center">
+	         <a style="float:right" href="/contact"><h6>Need Help? <img class="help-img" src="assets/images/help.svg"></h6></a>
+        </div>
+    	<div class="col-sm-5 col-xs-5"></div>
+    </div>
+    <!-- end need help -->
+
+	</form>
+	<!-- end form -->

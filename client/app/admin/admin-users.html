@@ -1,0 +1,35 @@
+<div class="container">
+  <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
+
+  <div class="row">
+    <div class="well col-sm-12">
+      <h1>Admin Users List</h1>
+    </div>
+  </div>
+
+  <ul class="row list-group">
+    <li class="list-group-item col-sm-12" ng-repeat="user in users | orderBy: '-createdAt'">
+        <strong>{{user.email}}</strong><br>
+
+        <span class="text-muted col-sm-4">
+          <strong>Created:</strong> {{user.createdAt | date: 'short' }}
+          <br>
+          <strong>Updated:</strong> {{actor.updatedAt | date: 'short' }}
+        </span>
+
+        <span class="pull-right col-sm-2">
+          <a ng-click="delete(user)" class="trash">
+            <button class="btn btn-danger">Eternal Delete <span class="glyphicon glyphicon-trash"></span></button>
+          </a>
+        </span>
+
+        <!-- delete button  -->
+<!--         <span class="pull-right col-sm-2">
+          <a ng-click="delete(user)" class="trash">
+            <button class="btn btn-danger">Eternal Delete <span class="glyphicon glyphicon-trash"></span></button>
+          </a>
+        </span> -->
+        <!-- end delete button  -->
+    </li>
+  </ul>
+</div>

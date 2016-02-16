@@ -1,0 +1,59 @@
+<div class="container actor-container">
+  <div class="actor-well">
+	<!-- name and quote -->
+	<div class="row">
+		<div class="col-sm-2">
+			<a ui-sref="actor.edit.overview" class="edit-profile">
+				<h6><img src="https://s3-us-west-1.amazonaws.com/castifistaticassets/edit.svg"> edit</h6>
+			</a>
+		</div>
+		<div class="col-sm-8 text-center">
+			<h2>{{actor.legalFirstName | capitalize }} {{actor.legalLastName | capitalize}}</h2>
+			<h4><small>{{actor.info.movieQuote}}</small></h4>
+		</div>
+		<div class="col-sm-2"></div>
+	</div>
+	<!-- end name and quote -->
+	<br>
+	<!-- 3 photos -->
+	<div class="row">
+	    <div class="col-sm-4" >
+	     <img ng-src="{{actor.headShot || 'assets/images/actor/picturebox.svg'}}">
+	         <h5>Headshot</h5>
+	          <br>
+	    </div>
+	    <div class="col-sm-4">
+	     	<img ng-src="{{actor.headToToe || 'assets/images/actor/picturebox.svg'}}">
+	         <h5>Head To Toe</h5>
+	          <br>
+	    </div>
+	    <div class="col-sm-4">
+	        <img ng-src="{{actor.realLife || 'assets/images/actor/picturebox.svg'}}">
+	         <h5>Real Life</h5>
+	          <br>
+	    </div>
+   </div>
+    <!-- end photos -->
+    <!-- bottom info -->
+    <div class="row">
+		<!-- left, basic physical gender, age range, height and weight verified, sag and how long background -->
+		<div class="col-sm-6">
+			<div class="row">
+				<div class="col-sm-4">
+					<h6>Gender: {{actor.gender | capitalize}}</h6>
+					<h6>Age Range: {{actor.appearance.portrayAgeMin}} to {{actor.appearance.portrayAgeMax}}</h6>
+					<h6>Height: {{actor.appearance.heightFeet}}' {{actor.appearance.heightInches}}"</h6>
+					<h6>Weight: {{actor.appearance.weight}} lbs</h6>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end bottom info -->
+	<div class="row">
+		<div class="col-sm-10"></div>
+		<div class="col-sm-2">
+				   <a style="float:right" href="/contact"><h6>Need Help?  <img class="help-img" src="assets/images/help.svg"></h6></a>
+		</div>
+	</div>
+  </div>
+</div>

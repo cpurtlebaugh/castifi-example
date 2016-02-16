@@ -1,0 +1,66 @@
+<div ng-controller="NavbarCtrl">
+<div class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+
+    <!-- hamburger dropdown button -->
+      <button class="navbar-toggle" type="button" ng-click="toggleNav()">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <button class="navbar-toggle hide" type="button" ng-click="toggleNav()">
+       <img src="https://s3-us-west-1.amazonaws.com/castifistaticassets/navbar/close.svg">
+     </button>
+
+    <!-- castifi logo -->
+          <a href="/"><img class="navbar-brand" src="https://s3-us-west-1.amazonaws.com/castifistaticassets/logo-desktop.png" alt="Castifi"></a>
+    </div>
+
+     <!-- old dropdown items -->
+    <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li ng-class="{active: isActive('/about')}"><a href="/about">About</a></li>
+        <li ng-class="{active: isActive('/contact')}"><a href="/contact">Contact</a></li>
+        <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin/dashboard">Admin</a></li>
+      </ul>
+
+    <!-- logged out options -->
+      <ul class="nav navbar-nav navbar-right">
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}">
+          <a class="signup-link" href="/signup">Sign up</a></li>
+        <li ng-hide="isLoggedIn()" class="hidden-xs">
+          <a class="signup-link">|</a></li>
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}">
+          <a class="signup-link" href="/login">Login</a></li>
+
+    <!-- logged in username -->
+        <li class="hidden-xs" ng-show="isLoggedIn()"><p class="navbar-text">Hello {{ (actor.legalFirstName | capitalize) || getCurrentUser().email }}</p> </li>
+
+    <!-- logged in dropdown -->
+         <li class="dropdown" ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}">
+          <a href="#" class="dropdown-toggle" style="padding-left:15px" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a ui-sref="profile">View Profile</a></li>
+            <li><a ui-sref="actor.edit.overview">Edit Profile</a></li>
+             <li><a ui-sref="settings">Settings</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="" ng-click="logout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+      <div class="row-offcanvas row-offcanvas-left hidden-xs hidden-sm hidden-md hidden-lg">
+        <div class="sidebar-offcanvas" id="sidebar">
+           <div ng-include="'components/navbar/navbar-mobile.html'"></div>
+        </div>
+      </div>
+
+</div>
+

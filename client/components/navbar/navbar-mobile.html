@@ -1,0 +1,114 @@
+<!-- not logged in -->
+
+<div class="navbar navbar-mobile navbar-static-top panels" ng-controller="NavbarCtrl">
+  <div class="container">
+    <div class="navbar-header navbar-mobile-header">
+      <ul class="mobile-nav-bar nav navbar-nav">
+
+        <!-- signup -->
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}" class="row">
+        <a ng-click="close('signup')">
+          <span class="col-xs-2"><img src="https://s3-us-west-1.amazonaws.com/castifistaticassets/navbar/Join.svg"></span>
+          <span class="col-xs-10">Signup</span>
+        </a>
+        </li>
+        <!-- endsignup -->
+        <!-- loggedIn user -->
+        <li ng-show="isLoggedIn()" class="row">
+          <a ng-click="close('profile')">
+            <span class="col-xs-2">
+              <img class="profile-image" ng-src="{{getCurrentUser().actorId.headShot || 'https://s3-us-west-1.amazonaws.com/castifistaticassets/navbar/avatar-placeholder.png'}}"></span>
+           <span class="col-xs-10">{{ (getCurrentUser().actorId.legalFirstName | capitalize)
+            || getCurrentUser().email }} {{ (getCurrentUser().actorId.legalLastName | capitalize) }}</span>
+          </a>
+        </li>
+        <!-- end loggedIn user -->
+        <li ng-hide="isLoggedIn()" class="nav-divider"></li>
+
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}" class="row">
+          <a ng-click="close('login')">
+          <span class="col-xs-2"><img src="https://s3-us-west-1.amazonaws.com/castifistaticassets/navbar/login.svg"></span>
+           <span class="col-xs-10">Login</span>
+        </a>
+        </li>
+
+        <li ng-show="isLoggedIn()" class="nav-divider"></li>
+        <!-- view profile -->
+        <li ng-show="isLoggedIn()" class="row">
+            <a ng-click="close('profile')">
+              <span class="col-xs-2"><img src="https://s3-us-west-1.amazonaws.com/castifistaticassets/navbar/Profile.svg"></span>
+              <span class="col-xs-10">View Profile</span>
+            </a>
+          </li>
+        <!-- end view profile -->
+         <li ng-show="isLoggedIn()" class="nav-divider"></li>
+        <!-- edit profile -->
+        <li ng-show="isLoggedIn()" class="row">
+            <a ng-click="close('actor.edit.overview')">
+              <span class="col-xs-2"><img src="https://s3-us-west-1.amazonaws.com/castifistaticassets/navbar/edit.svg"></span>
+              <span class="col-xs-10">Edit Profile</span>
+            </a>
+          </li>
+        <!-- end edit profile -->
+         <li ng-show="isLoggedIn()" class="nav-divider"></li>
+        <!-- settings -->
+        <li ng-show="isLoggedIn()" class="row">
+            <a ng-click="close('settings')">
+              <span class="col-xs-2"><img src="https://s3-us-west-1.amazonaws.com/castifistaticassets/navbar/Settings.svg"></span>
+              <span class="col-xs-10">Settings</span>
+            </a>
+          </li>
+        <!-- end settings -->
+
+        <li class="nav-divider"></li>
+
+        <li ng-class="{active: isActive('/about')}" class="row">
+          <a ng-click="close('about')">
+          <span class="col-xs-2"><img src="https://s3-us-west-1.amazonaws.com/castifistaticassets/navbar/tree-palm.svg"></span>
+           <span class="col-xs-10">About</span>
+         </a>
+        </li>
+
+        <li class="nav-divider"></li>
+
+        <li ng-class="{active: isActive('/contact')}" class="row">
+          <a ng-click="close('contact')">
+          <span class="col-xs-2"><img src="https://s3-us-west-1.amazonaws.com/castifistaticassets/navbar/contactus.svg"></span>
+           <span class="col-xs-10">Contact</span>
+         </a>
+         </li>
+
+        <li ng-show="isAdmin()" class="nav-divider"><a href="#"></a></li>
+
+        <!-- admin  -->
+        <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}" class="row">
+          <a ng-click="close('admin.dashboard')">
+          <span class="col-xs-2"><img src="
+https://s3-us-west-1.amazonaws.com/castifistaticassets/navbar/atom-panel.svg"></span>
+          <span class="col-xs-10">Admin</span>
+        </a>
+        </li>
+        <!-- admin -->
+
+        <li class="nav-divider"><a href="#"></a></li>
+
+
+      </ul>
+        <!-- logout -->
+         <!-- logout -->
+    </div>
+  </div>
+        <ul class="mobile-nav-footer">
+          <li ng-show="isLoggedIn()" class="row">
+            <a href="" ng-click="logout()">
+              <span class="col-xs-2"><img src="https://s3-us-west-1.amazonaws.com/castifistaticassets/navbar/log-out.svg"></span>
+              <span class="col-xs-10">Logout</span>
+            </a>
+          </li>
+        </ul>
+
+
+</div>
+
+
+

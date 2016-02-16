@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="well">
+    <h1>Admin Panel</h1>
+
+    <div class="row">
+      <div class="col-sm-3">
+        <h4>Total Users: {{users.length}}</h4>
+      </div>
+
+      <div class="col-sm-2">
+        <button class="btn btn-primary" ui-sref="admin.users">User List</button>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-sm-3">
+        <h4>Total Actors: {{actors.length}}</h4>
+        <h4>Male: {{maleCount.length}}, Female: {{femaleCount.length}}, Neutral: {{neutralCount.length}}</h4>
+        <h4>SAG: {{unionCount.length}}, Non: {{nonUnionCount.length}}, Eligible: {{sagEligibleCount.length}}</h4>
+        <h4>Average Profile:<br> {{averageProfile}}% completed</h4>
+        <h4>Facebook Signups: {{facebookSignups.length}}</h4>
+        <h4>Email Signups: {{emailSignups.length - facebookSignups.length}}</h4>
+      </div>
+
+      <div class="col-sm-2">
+        <button class="btn btn-primary" ui-sref="admin.actors.list">Actor List</button>
+      </div>
+
+      <div class="col-sm-2">
+        <button class="btn btn-primary" ui-sref="admin.table">Actor Search</button>
+      </div>
+    </div>
+
+  </div>
+</div>

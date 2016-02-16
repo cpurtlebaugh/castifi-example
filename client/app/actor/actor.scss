@@ -1,0 +1,474 @@
+// .cropArea {
+//     background: #E4E4E4;
+//     overflow: hidden;
+//     width:500px;
+//     height:350px;
+// }
+
+/* custom actor navbar */
+
+.navbar-actor{
+	.nav > li > a {
+	    padding: 15px 35px;
+	    color: black;
+	    width:100%
+	}
+	background-color: white;
+	border-radius: 11.5px;
+}
+
+.navbar-actor-small{
+	.nav > li > a {
+	    padding: 15px 25px;
+	    color: black;
+	}
+	background-color:white;
+	border-radius: 11.5px;
+}
+
+.navbar-actor li{
+	border-right: 1px solid #e4e4e4;
+}
+
+.navbar-actor li:last-child{
+	border-right: 1px solid #e4e4e4;
+}
+
+.navbar-actor li:first-child{
+	border-left: 1px solid #e4e4e4;
+}
+
+.navbar-actor .navbar-nav {
+    width: 100%;
+    text-align: center;
+    li {
+      float: none;
+      display: inline-block;
+    }
+  }
+
+.navbar-actor .navbar-nav > .active > a,
+.navbar-actor .navbar-nav > .active > a:hover,
+.navbar-actor .navbar-nav > a:hover,
+.navbar-actor .navbar-nav > .active > a:focus {
+    color: white;
+    background-color: $brand-info;
+}
+
+/* end actor navbar */
+
+.actor-container{
+	padding-left: 80px;
+	padding-right:80px;
+	font-family: 'Montserrat Light', sans-serif;
+	h3{
+		font-family: 'Montserrat', sans-serif;
+	}
+	h5{
+		font-family: 'Montserrat Hairline', sans-serif;
+		font-size: 16px;
+	}
+}
+
+	.confirmation-well {
+		background-color: $brand-info;
+		width: 100%;
+		height: 100%;
+		margin-top: -20px;
+		padding-bottom: 50%;
+		padding-top: 2%;
+		border-radius: 2.5px;
+		padding-left: 90px;
+		padding-right: 90px;
+		font-family: 'Montserrat Light', sans-serif;
+		h3{
+			font-family: 'Montserrat Light', sans-serif;
+			line-height: 1.5;
+		}
+		h5{
+			font-family: 'Montserrat Hairline', sans-serif;
+			font-size: 16px;
+		}
+	}
+
+.basic-container {
+	background-color: $brand-info;
+	width: 100%;
+	height: 100%;
+	margin-top: -20px;
+	padding-bottom: 50%;
+	padding-top: 2%;
+	padding-left: 190px;
+    padding-right: 190px;
+}
+
+.gender-container.gender-error{
+	border-color: #a94442;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.gender-container.gender-success{
+	border-color: #3c763d;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.actor-well{
+	background-color: white;
+	border-radius: 11.5px;
+	padding: 20px 50px;
+	position: relative;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+	border: 1px solid #ccc;
+	img{
+		width: 80%;
+	}
+	.help-img {
+    	width: 20px;
+	}
+	.confirm-icon {
+		width: 25%;
+		margin-top: 15px;
+	}
+	.confirm-h3 {
+		color: $brand-success;
+	}
+	.confirm-button {
+		width: 100%;
+		margin-bottom: 15px;
+		&:hover, &:focus {
+			color: white;
+		}
+	}
+}
+
+.congrats-well {
+	color: white;
+	border-radius: 11.5px;
+	padding: 20px 50px;
+	position: relative;
+	margin-top: 60px;
+	img{
+		width: 35%;
+	}
+	.help-img {
+    width: 20px;
+	}
+}
+
+.actor-navbar-container{
+	padding: 0px;
+}
+
+.actor-icons{
+	margin-top: 20px;
+	font-size: 100px;
+	a{
+		text-decoration: none;
+	}
+}
+
+.edit-profile{
+	img{
+		width:15px;
+	}
+}
+
+.header-icon {
+  width: 100px;
+  height: 100px;
+}
+.no-top-marg {
+	margin-top: 0;
+}
+
+.bottom-marg-10 {
+	margin-bottom: 10px;
+}
+
+.bottom-marg-15 {
+	margin-bottom: 15px;
+}
+
+.top-marg-10 {
+	margin-top: 10px;
+}
+
+.left-marg-10 {
+	margin-left: 10px;
+}
+
+.input-group-addon {
+	min-width: 120px;
+}
+
+.fr {
+	float: right;
+}
+
+.author span {
+	color: #777;
+}
+
+.photos{
+	img{
+		width: 80%;
+	}
+}
+
+.btn-remove{
+		margin: 5px 0px 30px 0px;
+}
+
+h5.profile{
+	font-family: 'Montserrat Light', sans-serif;
+}
+
+.height-label{
+	text-align:right;
+	label{
+		margin-top:10px;
+	}
+}
+
+/* Basic Profile */
+
+.basic-number{
+	font-size:36px;
+	color:#f2c400;
+}
+
+.upload{
+	margin-top:10px;
+}
+
+.basic-lead{
+	font-family: 'Montserrat', sans-serif;
+}
+
+.basic-hairline{
+	font-family: 'Montserrat Hairline', sans-serif;
+}
+
+.basic-upload-button{
+	font-size:12px;
+	background-color: #ff8577;
+	color:white;
+	border-radius:4.5px;
+	&:hover, &:focus {
+		color: white;
+	}
+}
+
+.basic-button-image{
+	width: 10%;
+}
+
+.basic-form .form-control{
+  border-radius:2.5px;
+}
+
+.min-age{
+	padding-right: 2px;
+	padding-left: 0px;
+}
+
+.max-age{
+	padding-left: 2px;
+	padding-right: 0px;
+}
+
+.btn-gender{
+	width: 100%;
+	background-color: transparent;
+	border-radius: 2.5px;
+
+}
+
+.gender{
+	padding-right:2px;
+	padding-left: 2px;
+}
+
+// .gender input[type="radio"] {
+//     opacity:0.01;
+//     z-index:100;
+//   }
+
+.gender-container{
+	background-color: white;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	border: 1px solid #ccc;
+	padding: 0px 12px;
+	border-radius: 2.5px;
+	position: relative;
+
+	// border-left: 1px solid #ccc;
+	// border-right: 1px solid #ccc;
+}
+
+.gender-active{
+	background-color: #f2c400;
+	color: white;
+	border-radius: 2.5px;
+}
+
+.gender-inactive{
+	background-color: white;
+	color: black;
+	border-radius: 2.5px;
+	border: 1px solid #ccc;
+	&:hover, &:focus, &:active {
+		background-color: white;
+		color: black;
+		border: 1px solid #ccc;
+	}
+}
+
+// .gender-active:hover, .gender-active:active, .gender-active:focus{
+// 	color: white;
+// }
+
+.zipcode{
+	margin-top: 15px;
+}
+
+.zipcode .form-control{
+	border-radius: 2.5px;
+}
+
+.btn-basic-submit{
+	background-color: #f2c400;
+	color: white;
+	border-radius: 2.5px;
+	width: 100%;
+	.basic-number{
+		color: white;
+	}
+	&:hover, &:focus {
+		color: white;
+	}
+}
+
+.basic-submit-text{
+	padding-top:12px;
+	font-size:100%;
+	text-align: center;
+}
+
+.basic-submit-div {
+	padding: 0px;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+/* End Basic Profile */
+
+/* Media Breakpoints */
+
+/* Actor Custom Media Breakpoints */
+
+@media only screen and (max-width: $screen-md) {
+
+	.btn-remove{
+		margin: 15px 0px 30px 0px;
+	}
+
+	.photos{
+	img{
+		width: 100%;
+		}
+	}
+
+	.congrats-well {
+		margin-top: 30px;
+	}
+
+	.actor-container{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.basic-container {
+		.well {
+			margin-top: 20px;
+		}
+	}
+
+	.actor-well {
+	    padding: 20px;
+
+	    img{
+	    	width: 80%;
+	    }
+	}
+
+	.confirmation-well {
+		padding-left: 15px;
+	    padding-right: 15px;
+	    padding-top: 0;
+	}
+
+	.basic-submit-text{
+		padding-top:12px;
+		font-size:80%;
+		text-align: center;
+	}
+
+	.basic-number {
+    	font-size: 26px;
+	}
+
+
+	.navbar-actor-small{
+		.nav > li > a {
+		    padding: 15px 25px;
+		    color: black;
+			&:active{
+				background-color: $brand-info;
+				width: 100%;
+			}
+			&:hover{
+				background-color: $brand-info;
+				width: 100%;
+			}
+			&:focus{
+				background-color: $brand-info;
+				width: 100%;
+			}
+
+		}
+			background-color:white;
+			border-radius: 11.5px;
+		}
+
+		.edit-profile{
+		img{
+			width:15px;
+		}
+	}
+
+	.height-label{
+		text-align:left;
+		label{
+			margin-top:0px;
+		}
+	}
+
+
+}
+
